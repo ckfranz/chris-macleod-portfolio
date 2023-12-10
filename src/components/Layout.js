@@ -3,17 +3,18 @@ import * as React from "react";
 
 import MainHeader from "../components/Nav/MainHeader";
 import Footer from "../components/Footer";
-import Gallery from "../components/Gallery";
+import PromoBanner from "./PromoBanner";
 
-import "./index.css";
+// import "./index.css";
 
 // Step 2: Define your component
-const IndexPage = () => {
+const layout = ({ children }) => {
   return (
     <div className="App">
       <div className="asset-container">
+        {/* <PromoBanner /> */}
         <MainHeader />
-        <Gallery />
+        {children}
         <Footer />
       </div>
     </div>
@@ -24,4 +25,4 @@ const IndexPage = () => {
 export const Head = () => <title>Home Page</title>;
 
 // Step 3: Export your component
-export default IndexPage;
+export default layout;

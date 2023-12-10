@@ -1,0 +1,135 @@
+/* --------------------------------------------- */
+/* CONTACT SHEET */
+
+.page-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+}
+
+/* FORM STYLE */
+
+*:focus {
+  outline: none;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+img,
+.cta-form {
+  width: 100%;
+}
+
+.contact-text {
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 300;
+  margin-bottom: 36px;
+  margin-top: 0px;
+}
+
+.contact-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cta-form input,
+.cta-form textarea,
+.cta-form button {
+  display: block;
+  margin: 0;
+  resize: vertical;
+  width: 100%;
+  padding: 16px 14px;
+  font-family: inherit;
+  border-style: solid;
+  border-width: 1px 1px 0px 1px;
+  border-color: #9b9b9b;
+  font-size: 14px;
+}
+
+.cta-form textarea {
+  border-width: 1px;
+}
+
+.cta-form button {
+  margin-top: 10px;
+  width: auto;
+  background-color: transparent;
+  border-width: 1px;
+  color: #494949;
+}
+
+.cta-form button:hover {
+  /* background-color: #f5f5f5; */
+  background-color: #8c8c8c;
+  color: white;
+  transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.message {
+  min-height: 50px;
+  max-height: 800px;
+}
+
+.contact-img {
+  height: 100%;
+  width: 300px;
+  object-fit: contain;
+}
+
+.send-button {
+  cursor: pointer;
+}
+
+/* TODO: Resize and make mobile friendly */
+
+@media screen and (max-width: 800px) {
+  .contact-container {
+    display: block;
+  }
+
+  .contact-img {
+    display: block;
+    width: 300px;
+    /* max-width: 20rem; */
+    /* max-width: 400px; */
+    margin: 0 auto 48px auto;
+  }
+
+  .contact-img-container {
+    display: block;
+  }
+
+  /* .contact-img {
+    max-width: 20rem;
+    min-width: 100%;
+    margin: 0 auto 24px auto;
+  } */
+}
+
+/* @media screen and (max-width: 1024px) {
+  img:hover {
+    transform: none;
+  }
+
+  .img-container {
+    height: 100%;
+    &:hover .img-content-hover {
+      display: none;
+    }
+  }
+
+  .img-content {
+    display: block;
+    padding: 1rem 0;
+  }
+} */

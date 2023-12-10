@@ -1,0 +1,121 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "gatsby";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+
+import "./MainHeader.css";
+import Social from ".././Social";
+import LinkButton from "../../UIComponents/LinkButton";
+// import { Link } from "react-scroll";
+
+const MainHeader = (props) => {
+  // let [mobileNavOpen, setMobileNavOpen] = useState(false);
+  let [mobileNavClass, setMobileNavClass] = useState("");
+
+  const openNav = () => {
+    // setMobileNavOpen(!mobileNavOpen);
+    setMobileNavClass(mobileNavClass == "" ? "active" : "");
+  };
+
+  const closeNav = () => {
+    // setMobileNavOpen(false);
+    setMobileNavClass("");
+  };
+
+  useEffect(() => {
+    const HandleResize = () => {
+      if (window.innerWidth > 799) {
+        closeNav();
+      }
+    };
+    window.addEventListener("resize", HandleResize);
+
+    return () => {
+      window.removeEventListener("resize", HandleResize);
+    };
+  });
+
+  return (
+    <div>
+      <header className="app-header" id="header">
+        <h1 className="page-header">
+          <Link className="site-header" to="/about">
+            Chris Macleod
+          </Link>
+        </h1>
+        {/* <FontAwesomeIcon icon={faBars} /> */}
+        <button className="nav-menu" onClick={openNav}>
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <nav className="nav-bar">
+          <Link to="/about">about</Link>
+          <div className="collections-dropdown">
+            <a className="nav-item">
+              Collections <FontAwesomeIcon icon={faAngleDown} />
+            </a>
+            <div className="collections">
+              <Link className="nav-item" to="/wildlife">
+                wildlife
+              </Link>
+              <Link className="nav-item" to="/studies">
+                studies
+              </Link>
+              <Link
+                to="gallery-3"
+                spy={true}
+                smooth={true}
+                offset={0}
+                duration={500}
+              ></Link>
+            </div>
+          </div>
+          <Link to="/pet-portraits">pet poraits</Link>
+          <Link to="/shop">shop</Link>
+          <Link to="/contact">info/contact</Link>
+        </nav>
+        <div className="social-container">
+          <Social />
+        </div>
+      </header>
+
+      {/* ------------------------ MOBILE HEADER ------------------------ */}
+      <nav className={"mobile-nav " + mobileNavClass}>
+        <ul>
+          <li>
+            <Link to="/about">about</Link>
+          </li>
+          <li className="collections-dropdown">
+            <a className="nav-item">
+              Collections <FontAwesomeIcon icon={faAngleDown} />
+            </a>
+            <ul className="collections">
+              <li>
+                <Link className="nav-item" to="/wildlife">
+                  wildlife
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-item" to="/studies">
+                  pastel
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <Link className="nav-item" to="/pet-portraits">
+            pet portraits
+          </Link>
+          <Link className="nav-item" href="/shop">
+            shop
+          </Link>
+          <Link className="nav-item" to="/contact">
+            info/contact
+          </Link>
+          <Social />
+        </ul>
+      </nav>
+    </div>
+  );
+};
+
+export default MainHeader;

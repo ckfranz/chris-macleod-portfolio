@@ -1,0 +1,12 @@
+/* PromoBanner.css */
+.promo-banner {
+  font-weight: 400;
+  font-size: 14px;
+  background-color: #815c22;
+  opacity: 0.5;
+  color: #fff;
+  padding: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  /* Add more styles for height, font-size, borders, positioning, etc. as needed */
+}

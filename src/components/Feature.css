@@ -1,0 +1,88 @@
+.section-feature {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.feature-block {
+  display: flex;
+}
+
+.slideshow-container {
+  /* height: 100vh; */
+  padding: 56px;
+  margin-bottom: 100px;
+}
+
+.hollow-button {
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  margin-bottom: 0;
+  border-color: white;
+  color: white;
+}
+
+.hollow-button:hover {
+  background-color: white;
+  border-color: white;
+}
+
+/*  Slide Header */
+
+.feature-block {
+  width: 100%;
+  margin-bottom: 4rem;
+  height: 350px;
+  position: relative;
+}
+
+.feature-container {
+  margin: 0 auto;
+  position: relative;
+  /* height: 40rem; */
+  /* width: 100%; */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.feature-img {
+  float: left;
+  overflow: hidden;
+
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.feature-memo {
+  /* background: rgba(239, 239, 239, 0.7); */
+  /* opacity: 25%; */
+  float: right;
+  padding: 32px;
+  /* background: linear-gradient(to, #da4453, #89216b); */
+  /* filter: brightness(130%); */
+  /* opacity: 0.7; */
+  /* backdrop-filter: blur(10px); */
+  /* color: rgb(217, 217, 217); */
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  right: 0px;
+  color: black;
+  font-size: 20px;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .feature-memo {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.feature-memo div {
+  padding-bottom: 16px;
+  font-size: 14px;
+}

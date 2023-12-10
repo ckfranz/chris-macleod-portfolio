@@ -1,0 +1,30 @@
+/* hide the button when page first loaded */
+.scroll-container {
+  position: fixed;
+  top: 22px;
+  right: 23px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  z-index: 10;
+  outline: 0;
+  border-radius: 8px;
+  border: none;
+
+  opacity: 0.7;
+  /* visibility: hidden; */
+  -webkit-transition: opacity 3000ms ease-out, visibility 5000ms ease-out;
+  transition: opacity 3000ms ease-out, visibility 5000ms ease-out;
+}
+
+.test {
+  visibility: hidden;
+  -webkit-transition: opacity 300ms ease-out, visibility 500ms ease-out;
+  transition: opacity 300ms ease-out, visibility 500ms ease-out;
+}
+
+.scroll-container:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  background-color: #d8d8d8;
+}
