@@ -171,8 +171,8 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
           />
           <div className="info">
             {title && title}
-            {year ? ", " + year : ""}
-            {size ? " (" + size + ")" : ""}
+            {year && (title ? `, ${year}` : year)}
+            {size && (title || year) ? ` (${size})` : size}
           </div>
         </div>
         {/* <FontAwesomeIcon className="info-icon" icon={faBinoculars} size="lg" /> */}
