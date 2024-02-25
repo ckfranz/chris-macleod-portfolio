@@ -8,7 +8,7 @@ import ToggleDropdown from "../UIComponents/ToggleDropdown";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import "./Contact.css";
+import "./contact.css";
 import Pricing from "./Pricing";
 
 const Contact = ({ data }) => {
