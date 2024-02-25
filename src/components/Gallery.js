@@ -62,8 +62,8 @@ const Gallery = ({ data }) => {
                 />
                 <div className="caption">
                   {title && title}
-                  {year ? ", " + year : ""}
-                  {size ? " (" + size + ")" : ""}
+                  {year && (title ? `, ${year}` : year)}
+                  {size && (title || year) ? ` (${size})` : size}
                 </div>
               </div>
             );

@@ -8,7 +8,7 @@ const ReturnToTop = () => {
 
   useEffect(() => {
     const listenToScroll = () => {
-      const heightToHideFrom = 1000;
+      const heightToHideFrom = 800;
       const winScroll = window.scrollY || document.documentElement.scrollTop;
 
       if (winScroll > heightToHideFrom) {

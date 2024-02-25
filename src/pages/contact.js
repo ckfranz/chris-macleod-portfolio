@@ -47,7 +47,7 @@ const Contact = ({ data }) => {
           <div className="contact-container">
             <div className="contact-img-container">
               {data.allCloudinaryMedia.nodes.map((media, index) => {
-                console.log(media + " : " + index);
+                // console.log(media + " : " + index);
                 const image = getImage(media);
                 return (
                   <div key={index}>
@@ -97,7 +97,7 @@ const Contact = ({ data }) => {
                 ></textarea>
               </div>
               {/* SPAM FILTERING */}
-              <div class="field">
+              <div className="field">
                 <div data-netlify-recaptcha="true"></div>
               </div>
               <button type="submit" className="send-button">

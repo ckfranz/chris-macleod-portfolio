@@ -1,0 +1,26 @@
+.species-photo {
+  width: 100%;
+  height: auto;
+}
+
+.species-img-container {
+  position: relative;
+}
+
+.species-info-container {
+  background-color: rgba(245, 245, 245, 0.5);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .species-map {
+    position: absolute;
+    bottom: -10px; /* Adjust the top position */
+    right: -10px; /* Adjust the right position */
+    width: 200px; /* Adjust the width of the second image */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Ensure the second image is above the first one */
+  }
+}

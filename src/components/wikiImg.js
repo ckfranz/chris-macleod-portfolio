@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import "./wikiImg.css";
 
 const WikiImg = () => {
   const [speciesImg, setSpeciesImg] = useState("");
 
   // 1. Get Main species image file
-  const speciesName = "Eastern screech owl";
+  const speciesName = "Orca";
   let imgFile;
   let mediaFile;
+  let mapFile;
 
   // 1. Get species img file
   const imgFileQuery = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=${encodeURIComponent(
@@ -25,7 +27,6 @@ const WikiImg = () => {
     fetch(imgFileQuery)
       .then((response) => response.json())
       .then((data) => {
-        console.log();
         imgFile = "File:" + data.query.pages[0].pageimage;
       })
       .catch((error) => console.error("Error fetching data:", error)),
@@ -53,8 +54,14 @@ const WikiImg = () => {
     .catch((error) => console.error("Error in Promise.all:", error));
 
   return (
-    <div>
-      <img src={speciesImg} />
+    <div className="species-info-container">
+      <h1>{speciesName}</h1>
+      <p>Conservation Status</p>
+      <p>Map</p>
+      <div className="species-img-container">
+        <img className="species-photo" src={speciesImg} />
+        <img className="species-map" src={speciesImg} />
+      </div>
     </div>
   );
 };

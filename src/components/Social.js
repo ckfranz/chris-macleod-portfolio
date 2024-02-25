@@ -17,6 +17,7 @@ import "./Social.css";
 const Social = () => {
   const insagram = process.env.GATSBY_INSTAGRAM_LINK;
   const facebook = process.env.GATSBY_FACEBOOK_LINK;
+  const etsy = process.env.GATSBY_ETSY_LINK;
   const email = process.env.GATSBY_EMAIL;
 
   return (
@@ -32,22 +33,15 @@ const Social = () => {
         </a>
       </li>
       <li>
-        <a href={email} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faEnvelope} />
-        </a>
-      </li>
-      {/* <li>
-        <a href={etsy} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faStore} />
-        </a>
-      </li> */}
-      {/* <li>
         <a href={"mailto: " + email} target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
-      </li> */}
-
-      <div className="shop"></div>
+      </li>
+      <li>
+        <a href={etsy} target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faStore} />
+        </a>
+      </li>
     </ul>
   );
 };

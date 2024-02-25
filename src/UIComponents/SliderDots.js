@@ -6,7 +6,6 @@ import Slideshow from "../components/Slideshow";
 const SliderDots = (props) => {
   const clicked = () => {
     // Syle button to be activated
-    console.log("Slider ");
   };
 
   return (

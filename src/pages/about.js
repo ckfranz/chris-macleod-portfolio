@@ -32,7 +32,7 @@ const About = ({ data }) => {
           <div className="about-container">
             <div className="about-img-container">
               {data.allCloudinaryMedia.nodes.map((media, index) => {
-                console.log(media + " : " + index);
+                // console.log(media + " : " + index);
                 const image = getImage(media);
                 return (
                   <div key={index}>

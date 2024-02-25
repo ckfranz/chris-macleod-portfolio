@@ -22,7 +22,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
 
   const handleNextImage = () => {
     setCurrentImageIndex((currentImageIndex + 1) % galleryData.length);
-    console.log(imageVisible);
+    // console.log(imageVisible);
     setImageVisible(false);
   };
 
@@ -76,7 +76,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
   }, [currentImageIndex]);
 
   useEffect(() => {
-    console.log(imageVisible);
+    // console.log(imageVisible);
     setImageVisible(true);
   }, [currentImageIndex]);
 
@@ -105,7 +105,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
 
           const data = await response.json();
           const img = data?.entities[0]?.images[0];
-          console.log(img);
+          // console.log(img);
           setImgLink(img);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -137,7 +137,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
           className="preview-close preview-button"
           onClick={hidePreview}
         >
-          <i class="bi bi-x-lg"></i>
+          <i className="bi bi-x-lg"></i>
         </button>
         <button
           type="button"
@@ -146,7 +146,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
           onClick={handlePrevImage}
           aria-label="Previous Slide"
         >
-          <i class="bi bi-chevron-left"></i>
+          <i className="bi bi-chevron-left"></i>
         </button>
         <button
           type="button"
@@ -155,34 +155,28 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
           onClick={handleNextImage}
           aria-label="Next Slide"
         >
-          <i class="bi bi-chevron-right"></i>
+          <i className="bi bi-chevron-right"></i>
         </button>
       </div>
-      <div className="image-container">
-        {/* TODO: ADD ONCLICK */}
-
-        <GatsbyImage
-          image={image}
-          alt={title}
-          className={`responsive-image fade-in-out ${
-            imageVisible ? "fade-in" : "fade-out"
-          }`}
-          objectFit="contain"
-        />
-        {/* <WikiImg /> */}
-        {/* <img
-          src="../images/low-res-images/Test-Image-1.jpg"
-          className="species-photo"
-        /> */}
-
-        <div className="info">
-          {title && title}
-          {year ? ", " + year : ""}
-          {size ? " (" + size + ")" : ""}
+      <div className="image-containers">
+        {/* TODO: ADD ONCLICK NEXT IMG*/}
+        <div>
+          <GatsbyImage
+            image={image}
+            alt={title}
+            className={`responsive-image fade-in-out ${
+              imageVisible ? "fade-in" : "fade-out"
+            }`}
+            objectFit="contain"
+          />
+          <div className="info">
+            {title && title}
+            {year ? ", " + year : ""}
+            {size ? " (" + size + ")" : ""}
+          </div>
         </div>
         {/* <FontAwesomeIcon className="info-icon" icon={faBinoculars} size="lg" /> */}
-        {/* <img src={imgLink} className="species-photo" />
-        <WikiImg /> */}
+        <div className="widthh">{/* <WikiImg /> */}</div>
       </div>
     </div>
   );

@@ -12,40 +12,48 @@ import LinkButton from "../../UIComponents/LinkButton";
 const MainHeader = (props) => {
   // let [mobileNavOpen, setMobileNavOpen] = useState(false);
   let [mobileNavClass, setMobileNavClass] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
-  const openNav = () => {
-    // setMobileNavOpen(!mobileNavOpen);
-    setMobileNavClass(mobileNavClass == "" ? "active" : "");
-  };
-
-  const closeNav = () => {
-    // setMobileNavOpen(false);
+  const closeMobileNav = () => {
+    setIsOpen(false);
     setMobileNavClass("");
+    document.body.style.overflow = "auto";
   };
 
-  useEffect(() => {
-    const HandleResize = () => {
-      if (window.innerWidth > 799) {
-        closeNav();
-      }
-    };
-    window.addEventListener("resize", HandleResize);
+  const toggleMobileNav = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      setMobileNavClass(mobileNavClass == "" ? "active" : "");
+      document.body.style.overflow = "hidden";
+    } else {
+      setMobileNavClass("");
+      document.body.style.overflow = "auto";
+    }
+  };
 
-    return () => {
-      window.removeEventListener("resize", HandleResize);
-    };
-  });
+  // useEffect(() => {
+  //   const HandleResize = () => {
+  //     if (window.innerWidth > 799) {
+  //       toggleMobileNav();
+  //     }
+  //   };
+  //   window.addEventListener("resize", HandleResize);
+
+  //   return () => {
+  //     window.removeEventListener("resize", HandleResize);
+  //   };
+  // });
 
   return (
     <div>
       <header className="app-header" id="header">
         <h1 className="page-header">
-          <Link className="site-header" to="/about">
+          <Link className="site-header" to="/about" onClick={closeMobileNav}>
             Chris Macleod
           </Link>
         </h1>
         {/* <FontAwesomeIcon icon={faBars} /> */}
-        <button className="nav-menu" onClick={openNav}>
+        <button className="nav-menu" onClick={toggleMobileNav}>
           <FontAwesomeIcon icon={faBars} />
         </button>
         <nav className="nav-bar">
@@ -81,37 +89,44 @@ const MainHeader = (props) => {
 
       {/* ------------------------ MOBILE HEADER ------------------------ */}
       <nav className={"mobile-nav " + mobileNavClass}>
-        <ul>
+        <ul className="nav-list">
           <li>
-            <Link to="/about">about</Link>
+            <Link to="/about" onClick={toggleMobileNav}>
+              about
+            </Link>
           </li>
-          <li className="collections-dropdown">
-            <a className="nav-item">
-              Collections <FontAwesomeIcon icon={faAngleDown} />
-            </a>
-            <ul className="collections">
-              <li>
-                <Link className="nav-item" to="/wildlife">
-                  wildlife
-                </Link>
-              </li>
-              <li>
-                <Link className="nav-item" to="/studies">
-                  pastel
-                </Link>
-              </li>
-            </ul>
+          <li>
+            <Link to="/studies" onClick={toggleMobileNav}>
+              studies
+            </Link>
           </li>
-          <Link className="nav-item" to="/pet-portraits">
-            pet portraits
-          </Link>
-          <Link className="nav-item" href="/shop">
-            shop
-          </Link>
-          <Link className="nav-item" to="/contact">
-            info/contact
-          </Link>
-          <Social />
+          <li>
+            <Link to="/wildlife" onClick={toggleMobileNav}>
+              wildlife
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="nav-item"
+              to="/pet-portraits"
+              onClick={toggleMobileNav}
+            >
+              pet portraits
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-item" href="/shop" onClick={toggleMobileNav}>
+              shop
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-item" to="/contact" onClick={toggleMobileNav}>
+              info/contact
+            </Link>
+          </li>
+          <li>
+            <Social />
+          </li>
         </ul>
       </nav>
     </div>
