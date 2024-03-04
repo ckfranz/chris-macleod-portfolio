@@ -1,49 +1,49 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# Art Portfolio Website
 
-## 🚀 Quick start
+This is a Gatsby-based art portfolio website showcasing the work of Christopher Macleod.
 
-1.  **Create a Gatsby site.**
+## Overview
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+This website showcases their artwork, including paintings, sketches, and digital art.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## Features
 
-2.  **Start developing.**
+- Responsive design for all devices
+- Easy navigation to view different art categories
+- Gallery for artwork display
+- High-quality image display
+- Contact form for commissions or inquiries
+- About Me section
 
-    Navigate into your new site’s directory and start it up.
+## Technologies Used
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+- Gatsby
+- React
+- GraphQL
+- CSS
 
-3.  **Open the code and start customizing!**
+## Setup
 
-    Your site is now running at http://localhost:8000!
+1. Clone the repository.
+2. Install dependencies: `npm install`.
+3. Customize content in `/src/pages`.
+4. Run development server: `gatsby develop`.
+5. Build for production: `gatsby build`.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+## Deployment
 
-4.  **Learn more**
+The website is deployed using [Netlify](https://www.netlify.com/).
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Live Demo
 
-## 🚀 Quick start (Netlify)
+View the live website at [Friend's Art Portfolio](https://example.com).
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+## Screenshots
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+![Home Page](screenshots/home.png)
+![Gallery Page](screenshots/gallery.png)
+
+## Credits
+
+- Developed by Curtis Franz
+- Artwork by Christopher Macleod
