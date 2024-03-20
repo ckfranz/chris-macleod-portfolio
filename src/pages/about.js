@@ -40,7 +40,7 @@ const About = ({ data }) => {
                       key={index}
                       image={image}
                       alt="img-name"
-                      className="test-class"
+                      className="about-img"
                       // style={{
                       //   objectFit: "contain",
                       //   width: "100px",

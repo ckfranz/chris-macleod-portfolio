@@ -98,10 +98,8 @@ img,
   }
 
   .contact-img {
-    display: block;
+    display: block !important;
     width: 300px;
-    /* max-width: 20rem; */
-    /* max-width: 400px; */
     margin: 0 auto 48px auto;
   }
 

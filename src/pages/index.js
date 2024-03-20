@@ -1,22 +1,52 @@
 // Step 1: Import React
 import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import MainHeader from "../components/Nav/MainHeader";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout";
 import Gallery from "../components/Gallery";
+import Slideshow from "../components/Slideshow";
 
 import "./index.css";
+import "./wildlife.css";
 
 // Step 2: Define your component
 const IndexPage = () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allCloudinaryMedia(
+          filter: { public_id: { glob: "ChrisPortfolio/WebsiteWildlife/*" } }
+        ) {
+          edges {
+            node {
+              secure_url
+              gatsbyImageData(placeholder: BLURRED)
+              context {
+                custom {
+                  Medium
+                  Size
+                  Status
+                  Year
+                  caption
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+
   return (
-    <div className="App">
-      <div className="asset-container">
-        <MainHeader />
-        <Gallery />
-        <Footer />
+    <Layout>
+      <div>
+        {/* <Slideshow /> */}
+        <section className="section" id="gallery-1">
+          {/* <h2 className="header">Wildlife Collection</h2> */}
+          <Gallery data={data} />
+        </section>
       </div>
-    </div>
+    </Layout>
   );
 };
 

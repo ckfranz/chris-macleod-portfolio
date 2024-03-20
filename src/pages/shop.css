@@ -50,7 +50,7 @@ hr {
 }
 
 p {
-  margin-left: 16px;
+  /* margin-left: 16px; */
 }
 
 @media screen and (max-width: 800px) {

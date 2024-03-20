@@ -7,10 +7,8 @@ import { faBars, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import "./MainHeader.css";
 import Social from ".././Social";
 import LinkButton from "../../UIComponents/LinkButton";
-// import { Link } from "react-scroll";
 
 const MainHeader = (props) => {
-  // let [mobileNavOpen, setMobileNavOpen] = useState(false);
   let [mobileNavClass, setMobileNavClass] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,24 +29,11 @@ const MainHeader = (props) => {
     }
   };
 
-  // useEffect(() => {
-  //   const HandleResize = () => {
-  //     if (window.innerWidth > 799) {
-  //       toggleMobileNav();
-  //     }
-  //   };
-  //   window.addEventListener("resize", HandleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", HandleResize);
-  //   };
-  // });
-
   return (
     <div>
       <header className="app-header" id="header">
         <h1 className="page-header">
-          <Link className="site-header" to="/about" onClick={closeMobileNav}>
+          <Link className="site-header" to="/" onClick={closeMobileNav}>
             Chris Macleod
           </Link>
         </h1>
