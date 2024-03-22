@@ -58,7 +58,7 @@ const Contact = ({ data }) => {
               data-netlify="true"
               className="cta-form"
               method="POST"
-              onSubmit={handleSubmit}
+              onSubmit="submit"
             >
               <div className="row">
                 <input
