@@ -9,7 +9,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import "./contact.css";
-import Pricing from "./Pricing";
 
 const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
@@ -28,21 +27,14 @@ const Contact = ({ data }) => {
       <div className="page-container">
         <div>
           {/* <h2>Contact</h2> */}
+          <h3>Let’s connect!</h3>
           <p className="contact-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis
-            obcaecati maiores laudantium neque quisquam placeat, beatae laborum,
-            nemo, non sequi deserunt enim iure praesentium reiciendis quas
-            reprehenderit blanditiis totam consectetur. Iure laudantium saepe
-            iste nostrum ratione eos nulla vel consectetur, fugit commodi natus,
-            consequatur deserunt delectus, eligendi vero. Totam, libero.
+            <br />
+            Please use the form below to reach out for any inquiries. Whether
+            you are interested in commissioning a piece, purchasing prints or
+            cards, or interested in my artistic process, I would love to hear
+            from you!
           </p>
-
-          {/* <ToggleDropdown title="Commission Process">
-            <Commission />
-          </ToggleDropdown>
-          <ToggleDropdown title="Pricing">
-            <Pricing />
-          </ToggleDropdown> */}
 
           <div className="contact-container">
             <div className="contact-img-container">
@@ -65,7 +57,7 @@ const Contact = ({ data }) => {
               name="contact"
               data-netlify="true"
               className="cta-form"
-              action="POST"
+              method="POST"
               onSubmit={handleSubmit}
             >
               <div className="row">

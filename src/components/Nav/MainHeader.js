@@ -64,8 +64,7 @@ const MainHeader = (props) => {
             </div>
           </div>
           <Link to="/pet-portraits">pet poraits</Link>
-          <Link to="/shop">shop</Link>
-          <Link to="/contact">info/contact</Link>
+          <Link to="/contact">contact</Link>
         </nav>
         <div className="social-container">
           <Social />
@@ -100,13 +99,8 @@ const MainHeader = (props) => {
             </Link>
           </li>
           <li>
-            <Link className="nav-item" href="/shop" onClick={toggleMobileNav}>
-              shop
-            </Link>
-          </li>
-          <li>
             <Link className="nav-item" to="/contact" onClick={toggleMobileNav}>
-              info/contact
+              contact
             </Link>
           </li>
           <li>
