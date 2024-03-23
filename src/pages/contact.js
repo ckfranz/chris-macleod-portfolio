@@ -13,9 +13,9 @@ import "./contact.css";
 const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,16 +63,17 @@ const Contact = ({ data }) => {
               data-netlify="true"
               netlify-honeypot="bot-field"
               className="cta-form"
-              method="POST"
+              method="post"
               onSubmit={handleSubmit}
             >
+              <input type="hidden" name="contact-form" value="contact" />
               <div className="row">
                 <input
                   type="text"
                   name="name"
                   placeholder="Full Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  // value={name}
+                  // onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
@@ -81,8 +82,8 @@ const Contact = ({ data }) => {
                   type="email"
                   name="email"
                   placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -95,8 +96,8 @@ const Contact = ({ data }) => {
                   name="message"
                   rows="10"
                   className="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  // value={message}
+                  // onChange={(e) => setMessage(e.target.value)}
                   required
                 ></textarea>
               </div>
