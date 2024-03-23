@@ -13,10 +13,6 @@ import "./contact.css";
 const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [message, setMessage] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowModal(true);
@@ -57,23 +53,49 @@ const Contact = ({ data }) => {
                 );
               })}
             </div>
-            {/* <ContactForm /> */}
             <form
-              name="contact v1"
-              method="post"
+              name="contact"
               data-netlify="true"
+              className="cta-form"
+              method="POST"
               onSubmit="submit"
             >
-              <input type="hidden" name="form-name" value="contact v1" />
-              <div>
-                <label>
-                  First Name <br />
-                  <input type="text" name="first-name" />
-                </label>
+              <div className="row">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  required
+                />
               </div>
-              <button type="submit">Submit!</button>
+              <div className="row">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                />
+              </div>
+              {/* <div className="col">
+              <input placeholder="Inquiry Type" required />
+            </div> */}
+              <div className="form-group">
+                <textarea
+                  placeholder="Your Message"
+                  name="message"
+                  rows="10"
+                  className="message"
+                  required
+                ></textarea>
+              </div>
+              {/* SPAM FILTERING */}
+              <div className="field">
+                <div data-netlify-recaptcha="true"></div>
+              </div>
+              <button type="submit" className="send-button">
+                Send Message
+              </button>
             </form>
-
             {showModal && <ModalSuccess onClose={closeModal} />}
           </div>
         </div>
