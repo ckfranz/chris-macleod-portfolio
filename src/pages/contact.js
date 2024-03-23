@@ -13,9 +13,22 @@ import "./contact.css";
 const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowModal(true);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        setShowModal(true);
+        myForm.reset(); // Reset the form after successful submission
+      })
+      .catch((error) => alert(error));
   };
 
   const closeModal = () => {
@@ -58,7 +71,7 @@ const Contact = ({ data }) => {
               data-netlify="true"
               className="cta-form"
               method="POST"
-              onSubmit="submit"
+              onSubmit={handleSubmit}
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="bot-field" />
