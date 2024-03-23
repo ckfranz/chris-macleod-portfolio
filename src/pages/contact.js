@@ -60,6 +60,7 @@ const Contact = ({ data }) => {
               method="POST"
               onSubmit="submit"
             >
+              <input type="hidden" name="form-name" value="contact" />
               <div className="row">
                 <input
                   type="text"
