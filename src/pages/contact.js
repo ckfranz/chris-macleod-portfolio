@@ -12,20 +12,44 @@ import "./contact.css";
 
 const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
+  const [submitText, setSubmitText] = useState(null);
 
-  const handleSubmit = (event) => {
+  const onSubmit = async (event, setSubmitText) => {
     event.preventDefault();
+    setSubmitText("Submitting ...");
+    const formElements = [...event.currentTarget.elements];
+    const isValid =
+      formElements.filter((elem) => elem.name === "bot-field")[0].value === "";
+    const validFormElements = isValid ? formElements : [];
 
-    const myForm = event.target;
-    const formData = new FormData(myForm);
+    if (validFormElements.length < 1) {
+      // or some other cheeky error message
+      setSubmitText("It looks like you filled out too many fields!");
+    } else {
+      const filledOutElements = validFormElements
+        .filter((elem) => !!elem.value)
+        .map(
+          (element) =>
+            encodeURIComponent(element.name) +
+            "=" +
+            encodeURIComponent(element.value)
+        )
+        .join("&");
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => alert("Thank you for your submission"))
-      .catch((error) => alert(error));
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: filledOutElements,
+      })
+        .then(() => {
+          setSubmitText("Successfully submitted!");
+        })
+        .catch((_) => {
+          setSubmitText(
+            "There was an error with your submission, please email me using the address above."
+          );
+        });
+    }
   };
 
   const closeModal = () => {
@@ -68,7 +92,7 @@ const Contact = ({ data }) => {
               data-netlify="true"
               className="cta-form"
               method="POST"
-              onSubmit={handleSubmit}
+              onSubmit={(e) => onSubmit(e, setSubmitText)}
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="bot-field" />
@@ -108,6 +132,7 @@ const Contact = ({ data }) => {
                 Send Message
               </button>
             </form>
+            {submitText && <p>{submitText}</p>}
             {showModal && <ModalSuccess onClose={closeModal} />}
           </div>
         </div>
