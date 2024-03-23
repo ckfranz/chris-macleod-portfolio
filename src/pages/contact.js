@@ -13,6 +13,10 @@ import "./contact.css";
 const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowModal(true);
@@ -53,18 +57,22 @@ const Contact = ({ data }) => {
                 );
               })}
             </div>
+            {/* <ContactForm /> */}
             <form
               name="contact"
               data-netlify="true"
+              netlify-honeypot="bot-field"
               className="cta-form"
               method="POST"
-              onSubmit="submit"
+              onSubmit={handleSubmit}
             >
               <div className="row">
                 <input
                   type="text"
                   name="name"
                   placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
@@ -73,6 +81,8 @@ const Contact = ({ data }) => {
                   type="email"
                   name="email"
                   placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -85,6 +95,8 @@ const Contact = ({ data }) => {
                   name="message"
                   rows="10"
                   className="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   required
                 ></textarea>
               </div>
