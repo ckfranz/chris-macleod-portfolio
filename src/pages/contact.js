@@ -59,56 +59,21 @@ const Contact = ({ data }) => {
             </div>
             {/* <ContactForm /> */}
             <form
-              name="contact"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              className="cta-form"
+              name="contact v1"
               method="post"
+              data-netlify="true"
               onSubmit={handleSubmit}
             >
-              <input type="hidden" name="contact-form" value="contact" />
-              <div className="row">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name"
-                  // value={name}
-                  // onChange={(e) => setName(e.target.value)}
-                  required
-                />
+              <input type="hidden" name="form-name" value="contact v1" />
+              <div>
+                <label>
+                  First Name <br />
+                  <input type="text" name="first-name" />
+                </label>
               </div>
-              <div className="row">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              {/* <div className="col">
-              <input placeholder="Inquiry Type" required />
-            </div> */}
-              <div className="form-group">
-                <textarea
-                  placeholder="Your Message"
-                  name="message"
-                  rows="10"
-                  className="message"
-                  // value={message}
-                  // onChange={(e) => setMessage(e.target.value)}
-                  required
-                ></textarea>
-              </div>
-              {/* SPAM FILTERING */}
-              <div className="field">
-                <div data-netlify-recaptcha="true"></div>
-              </div>
-              <button type="submit" className="send-button">
-                Send Message
-              </button>
+              <button type="submit">Submit!</button>
             </form>
+
             {showModal && <ModalSuccess onClose={closeModal} />}
           </div>
         </div>
