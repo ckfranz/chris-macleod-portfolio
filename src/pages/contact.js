@@ -24,10 +24,7 @@ const Contact = ({ data }) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => {
-        setShowModal(true);
-        myForm.reset(); // Reset the form after successful submission
-      })
+      .then(() => alert("Thank you for your submission"))
       .catch((error) => alert(error));
   };
 
