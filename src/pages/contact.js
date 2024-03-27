@@ -17,39 +17,25 @@ const Contact = ({ data }) => {
   const onSubmit = async (event, setSubmitText) => {
     event.preventDefault();
     setSubmitText("Submitting ...");
-    const formElements = [...event.currentTarget.elements];
-    const isValid =
-      formElements.filter((elem) => elem.name === "bot-field")[0].value === "";
-    const validFormElements = isValid ? formElements : [];
 
-    if (validFormElements.length < 1) {
-      // or some other cheeky error message
-      setSubmitText("It looks like you filled out too many fields!");
-    } else {
-      const filledOutElements = validFormElements
-        .filter((elem) => !!elem.value)
-        .map(
-          (element) =>
-            encodeURIComponent(element.name) +
-            "=" +
-            encodeURIComponent(element.value)
-        )
-        .join("&");
+    const form = event.target;
+    const formData = new FormData(form);
 
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: filledOutElements,
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        setSubmitText("Successfully submitted!");
+        setShowModal(true);
       })
-        .then(() => {
-          setSubmitText("Successfully submitted!");
-        })
-        .catch((_) => {
-          setSubmitText(
-            "There was an error with your submission, please email me using the address above."
-          );
-        });
-    }
+      .catch((error) => {
+        setSubmitText(
+          "There was an error with your submission, please email me using the address above."
+        );
+        setShowModal(false);
+      });
   };
 
   const closeModal = () => {
@@ -93,7 +79,7 @@ const Contact = ({ data }) => {
               className="cta-form"
               method="POST"
               onSubmit={(e) => onSubmit(e, setSubmitText)}
-              data-netlify-honeypot="bot-field"
+              // data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="bot-field" />
               <div className="row">
