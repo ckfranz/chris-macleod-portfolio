@@ -27,11 +27,11 @@ const Social = () => {
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       </li>
-      <li>
+      {/* <li>
         <a href={facebook} target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebook} />
         </a>
-      </li>
+      </li> */}
       <li>
         <a href={"mailto: " + email} target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faEnvelope} />

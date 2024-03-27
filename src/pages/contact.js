@@ -11,20 +11,36 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import "./contact.css";
 
 const Contact = ({ data }) => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  // const [submitText, setSubmitText] = useState(null);
 
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [message, setMessage] = useState("");
+  // const onSubmit = async (event, setSubmitText) => {
+  //   event.preventDefault();
+  //   setSubmitText("Submitting ...");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowModal(true);
-  };
+  //   const form = event.target;
+  //   const formData = new FormData(form);
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: new URLSearchParams(formData).toString(),
+  //   })
+  //     .then(() => {
+  //       setSubmitText("Successfully submitted!");
+  //       setShowModal(true);
+  //     })
+  //     .catch((error) => {
+  //       setSubmitText(
+  //         "There was an error with your submission, please email me using the address above."
+  //       );
+  //       setShowModal(false);
+  //     });
+  // };
+
+  // const closeModal = () => {
+  //   setShowModal(false);
+  // };
 
   return (
     <Layout>
@@ -57,59 +73,62 @@ const Contact = ({ data }) => {
                 );
               })}
             </div>
-            {/* <ContactForm /> */}
+            {/* <form name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
+              <div>
+                <label>Your Email:</label>
+                <input type="email" name="email" />
+              </div>
+              <div>
+                <label>Message:</label>
+                <textarea name="message" />
+              </div>
+              <button type="submit">Send</button>
+            </form> */}
             <form
               name="contact"
               data-netlify="true"
-              netlify-honeypot="bot-field"
               className="cta-form"
-              method="post"
-              onSubmit={handleSubmit}
+              method="POST"
+              // onSubmit="submit"
+              action="/thank-you/"
+              // data-netlify-honeypot="bot-field"
             >
-              <input type="hidden" name="contact-form" value="contact" />
+              <input type="hidden" name="form-name" value="contact" />
               <div className="row">
+                <label className="visually-hidden">Your Name</label>
                 <input
                   type="text"
                   name="name"
                   placeholder="Full Name"
-                  // value={name}
-                  // onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
               <div className="row">
+                <label className="visually-hidden">Your Email</label>
                 <input
                   type="email"
                   name="email"
                   placeholder="Email Address"
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
-              {/* <div className="col">
-              <input placeholder="Inquiry Type" required />
-            </div> */}
               <div className="form-group">
+                <label className="visually-hidden">Message</label>
                 <textarea
                   placeholder="Your Message"
                   name="message"
                   rows="10"
                   className="message"
-                  // value={message}
-                  // onChange={(e) => setMessage(e.target.value)}
                   required
                 ></textarea>
-              </div>
-              {/* SPAM FILTERING */}
-              <div className="field">
-                <div data-netlify-recaptcha="true"></div>
               </div>
               <button type="submit" className="send-button">
                 Send Message
               </button>
             </form>
-            {showModal && <ModalSuccess onClose={closeModal} />}
+            {/* {submitText && <p>{submitText}</p>} */}
+            {/* {showModal && <ModalSuccess onClose={closeModal} />} */}
           </div>
         </div>
       </div>
