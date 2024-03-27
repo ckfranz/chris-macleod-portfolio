@@ -12,7 +12,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import "./contact.css";
 
-const Success = () => {
+const ThankYouPage = () => {
   return (
     <Layout>
       <div className="page-container">
@@ -38,4 +38,4 @@ const Success = () => {
   );
 };
 
-export default Success;
+export default ThankYouPage;
