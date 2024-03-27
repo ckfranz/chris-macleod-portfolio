@@ -11,8 +11,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import "./contact.css";
 
 const Contact = ({ data }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [submitText, setSubmitText] = useState(null);
+  // const [showModal, setShowModal] = useState(false);
+  // const [submitText, setSubmitText] = useState(null);
 
   // const onSubmit = async (event, setSubmitText) => {
   //   event.preventDefault();
@@ -77,12 +77,12 @@ const Contact = ({ data }) => {
               name="contact"
               data-netlify="true"
               className="cta-form"
-              method="POST"
+              method="post"
               onSubmit="submit"
               action="/success/"
               data-netlify-honeypot="bot-field"
             >
-              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="bot-field" value="contact" />
               <div className="row">
                 <input
                   type="text"
@@ -119,7 +119,7 @@ const Contact = ({ data }) => {
                 Send Message
               </button>
             </form>
-            {submitText && <p>{submitText}</p>}
+            {/* {submitText && <p>{submitText}</p>} */}
             {/* {showModal && <ModalSuccess onClose={closeModal} />} */}
           </div>
         </div>
