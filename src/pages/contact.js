@@ -96,7 +96,7 @@ const Contact = ({ data }) => {
             >
               <input type="hidden" name="form-name" value="contact" />
               <div className="row">
-                <label>Your Name:</label>
+                <label className="visually-hidden">Your Name</label>
                 <input
                   type="text"
                   name="name"
@@ -105,7 +105,7 @@ const Contact = ({ data }) => {
                 />
               </div>
               <div className="row">
-                <label>Your Email:</label>
+                <label className="visually-hidden">Your Email</label>
                 <input
                   type="email"
                   name="email"
@@ -114,7 +114,7 @@ const Contact = ({ data }) => {
                 />
               </div>
               <div className="form-group">
-                <label>Message:</label>
+                <label className="visually-hidden">Message</label>
                 <textarea
                   placeholder="Your Message"
                   name="message"
