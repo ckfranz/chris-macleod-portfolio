@@ -77,9 +77,9 @@ const Contact = ({ data }) => {
               name="contact"
               data-netlify="true"
               className="cta-form"
-              method="post"
+              method="POST"
               onSubmit="submit"
-              action="/pages/success/"
+              // action="/pages/success/"
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="bot-field" value="contact" />
