@@ -73,7 +73,19 @@ const Contact = ({ data }) => {
                 );
               })}
             </div>
-            <form
+            <form name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
+              <div>
+                <label>Your Email:</label>
+                <input type="email" name="email" />
+              </div>
+              <div>
+                <label>Message:</label>
+                <textarea name="message" />
+              </div>
+              <button type="submit">Send</button>
+            </form>
+            {/* <form
               name="contact"
               data-netlify="true"
               className="cta-form"
@@ -99,9 +111,6 @@ const Contact = ({ data }) => {
                   required
                 />
               </div>
-              {/* <div className="col">
-              <input placeholder="Inquiry Type" required />
-            </div> */}
               <div className="form-group">
                 <textarea
                   placeholder="Your Message"
@@ -111,14 +120,14 @@ const Contact = ({ data }) => {
                   required
                 ></textarea>
               </div>
-              {/* SPAM FILTERING */}
+
               <div className="field">
                 <div data-netlify-recaptcha="true"></div>
               </div>
               <button type="submit" className="send-button">
                 Send Message
               </button>
-            </form>
+            </form> */}
             {/* {submitText && <p>{submitText}</p>} */}
             {/* {showModal && <ModalSuccess onClose={closeModal} />} */}
           </div>
