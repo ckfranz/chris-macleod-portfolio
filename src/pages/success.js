@@ -12,7 +12,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import "./contact.css";
 
-const Success = ({ data }) => {
+const Success = () => {
   return (
     <Layout>
       <div className="page-container">
