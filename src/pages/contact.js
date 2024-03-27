@@ -73,7 +73,7 @@ const Contact = ({ data }) => {
                 );
               })}
             </div>
-            <form name="contact" method="POST" data-netlify="true">
+            {/* <form name="contact" method="POST" data-netlify="true">
               <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label>Your Email:</label>
@@ -84,8 +84,8 @@ const Contact = ({ data }) => {
                 <textarea name="message" />
               </div>
               <button type="submit">Send</button>
-            </form>
-            {/* <form
+            </form> */}
+            <form
               name="contact"
               data-netlify="true"
               className="cta-form"
@@ -94,8 +94,9 @@ const Contact = ({ data }) => {
               // action="/pages/success/"
               // data-netlify-honeypot="bot-field"
             >
-              <input type="hidden" name="bot-field" value="contact" />
+              <input type="hidden" name="form-name" value="contact" />
               <div className="row">
+                <label>Your Name:</label>
                 <input
                   type="text"
                   name="name"
@@ -103,7 +104,7 @@ const Contact = ({ data }) => {
                   required
                 />
               </div>
-              <div className="row">
+              {/* <div className="row">
                 <input
                   type="email"
                   name="email"
@@ -119,15 +120,11 @@ const Contact = ({ data }) => {
                   className="message"
                   required
                 ></textarea>
-              </div>
-
-              <div className="field">
-                <div data-netlify-recaptcha="true"></div>
-              </div>
+              </div> */}
               <button type="submit" className="send-button">
                 Send Message
               </button>
-            </form> */}
+            </form>
             {/* {submitText && <p>{submitText}</p>} */}
             {/* {showModal && <ModalSuccess onClose={closeModal} />} */}
           </div>
