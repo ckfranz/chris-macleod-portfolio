@@ -104,7 +104,8 @@ const Contact = ({ data }) => {
                   required
                 />
               </div>
-              {/* <div className="row">
+              <div className="row">
+                <label>Your Email:</label>
                 <input
                   type="email"
                   name="email"
@@ -113,6 +114,7 @@ const Contact = ({ data }) => {
                 />
               </div>
               <div className="form-group">
+                <label>Message:</label>
                 <textarea
                   placeholder="Your Message"
                   name="message"
@@ -120,7 +122,7 @@ const Contact = ({ data }) => {
                   className="message"
                   required
                 ></textarea>
-              </div> */}
+              </div>
               <button type="submit" className="send-button">
                 Send Message
               </button>
