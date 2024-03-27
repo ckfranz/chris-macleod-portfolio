@@ -14,33 +14,33 @@ const Contact = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
   const [submitText, setSubmitText] = useState(null);
 
-  const onSubmit = async (event, setSubmitText) => {
-    event.preventDefault();
-    setSubmitText("Submitting ...");
+  // const onSubmit = async (event, setSubmitText) => {
+  //   event.preventDefault();
+  //   setSubmitText("Submitting ...");
 
-    const form = event.target;
-    const formData = new FormData(form);
+  //   const form = event.target;
+  //   const formData = new FormData(form);
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        setSubmitText("Successfully submitted!");
-        setShowModal(true);
-      })
-      .catch((error) => {
-        setSubmitText(
-          "There was an error with your submission, please email me using the address above."
-        );
-        setShowModal(false);
-      });
-  };
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: new URLSearchParams(formData).toString(),
+  //   })
+  //     .then(() => {
+  //       setSubmitText("Successfully submitted!");
+  //       setShowModal(true);
+  //     })
+  //     .catch((error) => {
+  //       setSubmitText(
+  //         "There was an error with your submission, please email me using the address above."
+  //       );
+  //       setShowModal(false);
+  //     });
+  // };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  // const closeModal = () => {
+  //   setShowModal(false);
+  // };
 
   return (
     <Layout>
@@ -78,8 +78,9 @@ const Contact = ({ data }) => {
               data-netlify="true"
               className="cta-form"
               method="POST"
-              onSubmit={(e) => onSubmit(e, setSubmitText)}
-              // data-netlify-honeypot="bot-field"
+              onSubmit="submit"
+              action="/success/"
+              data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="bot-field" />
               <div className="row">
@@ -119,7 +120,7 @@ const Contact = ({ data }) => {
               </button>
             </form>
             {submitText && <p>{submitText}</p>}
-            {showModal && <ModalSuccess onClose={closeModal} />}
+            {/* {showModal && <ModalSuccess onClose={closeModal} />} */}
           </div>
         </div>
       </div>
