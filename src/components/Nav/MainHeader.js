@@ -63,7 +63,7 @@ const MainHeader = (props) => {
               ></Link>
             </div>
           </div>
-          <Link to="/pet-portraits">pet poraits</Link>
+          <Link to="/pet-portraits">pet portraits</Link>
           <Link to="/contact">contact</Link>
         </nav>
         <div className="social-container">
