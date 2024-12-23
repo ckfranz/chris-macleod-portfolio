@@ -7,7 +7,7 @@
   /* background-color: #f9f9f9; */
   /* border-radius: 8px; */
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-  color: #333;
+  color: var(--primary);
   /* line-height: 1.6; */
 }
 
@@ -16,7 +16,7 @@
   font-weight: 200;
   margin-bottom: 2rem;
   text-align: center;
-  color: #444;
+  color: var(--primary);
   font-family: "Playfair Display", serif;
 }
 
@@ -84,11 +84,13 @@ p {
 }
 
 .commission-section h4 {
+  color: var(--primary);
   padding-bottom: 8px;
   margin: 0;
 }
 
 .commission-section h5 {
+  color: var(--primary);
   padding: 0;
   margin: 0;
 }
