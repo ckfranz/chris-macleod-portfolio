@@ -219,6 +219,9 @@ const Shop = ({ data }) => {
               </p>
             </ToggleDropdown>
           </div>
+          {/* Placeholder cols */}
+          <div className="col"></div>
+          <div className="col"></div>
         </div>
       </div>
     </Layout>
