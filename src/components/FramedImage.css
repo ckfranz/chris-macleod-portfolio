@@ -1,0 +1,32 @@
+.frame {
+  position: relative;
+  padding: 0;
+  margin: 0px 0px 16px 0px;
+  border: solid 10px #555;
+  width: 100%; /* Adjust if necessary */
+  max-width: 30%;
+  box-shadow: -3px -3px 12px #999;
+}
+
+.border {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: solid 25px white;
+  box-shadow: -3px -3px 12px #999;
+}
+.inner-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  border-top: solid 2px #aaa;
+  border-left: solid 2px #aaa;
+  border-bottom: solid 2px #ccc;
+  border-right: solid 2px #ccc;
+}
+
+@media screen and (max-width: 800px) {
+  .frame {
+    max-width: 250px;
+  }
+}

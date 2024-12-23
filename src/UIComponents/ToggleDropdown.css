@@ -1,0 +1,13 @@
+.dropdown-header i {
+  font-size: 12px !important;
+  margin: 0 4px;
+}
+
+.dropdown-header {
+  cursor: pointer;
+  padding-bottom: 8px;
+}
+
+.toggle-dropdown {
+  cursor: pointer;
+}

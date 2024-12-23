@@ -33,7 +33,7 @@ module.exports = {
         // type: `public`,
         maxResults: 150,
         context: true,
-        // tags: true,
+        tags: true,
       },
     },
     {

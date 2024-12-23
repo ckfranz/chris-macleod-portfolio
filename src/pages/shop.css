@@ -1,21 +1,21 @@
-.cols {
+/* .cols {
   display: flex;
 }
 
 .col {
   padding: 16px 0px;
-  flex: 1 1 auto;
+  flex: 1 1 1;
+} */
+
+.shop-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
 }
 
-.group1 {
-  padding: 16px 0px;
-  margin-right: 32px;
+.col {
   flex: 1;
-}
-
-.group2 {
-  padding: 16px 0px;
-  flex: 1;
+  padding: 16px;
 }
 
 a.link {
@@ -23,24 +23,53 @@ a.link {
   color: var(--primary);
 }
 
-.image-container {
+h1 {
+  font-weight: 400;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  padding: 0 16px;
+}
+
+h3 {
+  font-size: 18px;
+  font-family: "Playfair Display", serif;
+}
+
+/* .image-container {
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-}
+} */
 
 .shop-img {
   padding: 16px;
-  max-height: 100%;
-  max-width: 180px;
-  object-fit: contain;
-  width: 400px;
+  width: 100%;
   height: auto;
   display: inline-block;
   align-items: center;
   flex: 0 1 auto;
+}
+
+.pricing {
+  display: flex;
+  gap: 16px;
+  /* justify-content: center; */
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 0;
+}
+
+.label {
+  font-weight: 500;
 }
 
 hr {
@@ -49,16 +78,36 @@ hr {
   border: none;
 }
 
-p {
-  /* margin-left: 16px; */
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 675px) {
   .cols1 {
     display: block;
   }
 
   .col {
     padding: 0px;
+  }
+
+  .shop-row {
+    display: inline-block; /* Enables flexbox */
+    justify-content: space-between; /* Optional: spaces out the columns with equal space */
+    text-align: center;
+  }
+
+  .shop-img {
+    padding: 16px;
+    max-width: 70%;
+    width: 175px;
+    height: auto;
+    display: inline-block;
+    align-items: center;
+    flex: 0 1 auto;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .pricing {
+    justify-content: center;
   }
 }

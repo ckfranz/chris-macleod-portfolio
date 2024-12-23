@@ -42,7 +42,6 @@ const IndexPage = () => {
       <div>
         {/* <Slideshow /> */}
         <section className="section" id="gallery-1">
-          {/* <h2 className="header">Wildlife Collection</h2> */}
           <Gallery data={data} />
         </section>
       </div>

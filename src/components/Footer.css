@@ -1,6 +1,6 @@
 .footer {
   /* font-family: monospace !important; */
-  font-size: 10px;
+  font-size: 10px !important;
   text-align: center;
   padding: 5rem 0 2.5rem;
 }

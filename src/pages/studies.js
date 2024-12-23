@@ -41,7 +41,6 @@ const WildlifeCollection = () => {
       <div>
         {/* <Slideshow /> */}
         <section className="section" id="gallery-1">
-          {/* <h2 className="header">Pastel Study Collection</h2> */}
           <Gallery data={data} />
         </section>
       </div>

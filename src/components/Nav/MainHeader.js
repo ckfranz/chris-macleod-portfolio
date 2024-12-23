@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "gatsby";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import {
+  faBars,
+  faAngleDown,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 import "./MainHeader.css";
 import Social from ".././Social";
@@ -39,14 +44,16 @@ const MainHeader = (props) => {
         </h1>
         {/* <FontAwesomeIcon icon={faBars} /> */}
         <button className="nav-menu" onClick={toggleMobileNav}>
-          <FontAwesomeIcon icon={faBars} />
+          {!isOpen ? (
+            <FontAwesomeIcon icon={faBars} />
+          ) : (
+            <i className="bi bi-x"></i>
+          )}
         </button>
         <nav className="nav-bar">
           <Link to="/about">about</Link>
           <div className="collections-dropdown">
-            <a className="nav-item">
-              Collections <FontAwesomeIcon icon={faAngleDown} />
-            </a>
+            <a className="nav-item">Collections</a>
             <div className="collections">
               <Link className="nav-item" to="/wildlife">
                 wildlife
@@ -54,18 +61,14 @@ const MainHeader = (props) => {
               <Link className="nav-item" to="/studies">
                 studies
               </Link>
-              <Link
-                to="gallery-3"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={500}
-              ></Link>
+              <Link className="nav-item" to="/pet-portraits">
+                pet portraits
+              </Link>
             </div>
           </div>
-          <Link to="/pet-portraits">pet poraits</Link>
           <Link to="/shop">shop</Link>
-          <Link to="/contact">info/contact</Link>
+          <Link to="/commissions">commissions</Link>
+          <Link to="/contact">contact</Link>
         </nav>
         <div className="social-container">
           <Social />
@@ -81,21 +84,17 @@ const MainHeader = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/studies" onClick={toggleMobileNav}>
-              studies
-            </Link>
-          </li>
-          <li>
             <Link to="/wildlife" onClick={toggleMobileNav}>
               wildlife
             </Link>
           </li>
           <li>
-            <Link
-              className="nav-item"
-              to="/pet-portraits"
-              onClick={toggleMobileNav}
-            >
+            <Link to="/studies" onClick={toggleMobileNav}>
+              studies
+            </Link>
+          </li>
+          <li>
+            <Link to="/pet-portraits" onClick={toggleMobileNav}>
               pet portraits
             </Link>
           </li>
@@ -105,8 +104,17 @@ const MainHeader = (props) => {
             </Link>
           </li>
           <li>
+            <Link
+              className="nav-item"
+              href="/commissions"
+              onClick={toggleMobileNav}
+            >
+              commissions
+            </Link>
+          </li>
+          <li>
             <Link className="nav-item" to="/contact" onClick={toggleMobileNav}>
-              info/contact
+              contact
             </Link>
           </li>
           <li>

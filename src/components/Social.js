@@ -37,11 +37,11 @@ const Social = () => {
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
       </li>
-      <li>
+      {/* <li>
         <a href={etsy} target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faStore} />
         </a>
-      </li>
+      </li> */}
     </ul>
   );
 };

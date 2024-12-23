@@ -1,21 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 
+/* @import url("https://fonts.cdnfonts.com/css/maleah"); */
+
 :root {
   --primary: #676767;
   --light: #959595;
   --dark: #434343;
   font-family: "Inter", sans-serif;
+  /* font-family: "Maleah", sans-serif; */
 }
 
 * {
-  /* margin: 0;
-  padding: 0; */
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  /* font-family: "Maleah", sans-serif; */
 }
 
 body {
-  /* font-family: "Montserrat", sans-serif; */
   color: var(--primary);
 }
 
@@ -30,15 +31,6 @@ a:active {
   color: var(--light);
 }
 
-.asset-container {
-  /* margin: 8px; */
-}
-
-/* Global Styles */
-.section {
-  /* margin: 8px; */
-}
-
 .header {
   text-align: center;
 }
@@ -48,10 +40,8 @@ html {
 }
 
 h2 {
-  /* font-family: "Playfair Display", serif; */
   font-weight: 200;
   font-size: 18px;
-  /* letter-spacing: -1px; */
   color: var(--dark);
   padding: 0 16px;
   text-transform: uppercase;
@@ -59,7 +49,16 @@ h2 {
 
 p {
   font-size: 16px;
-  line-height: 25px;
+  line-height: 20px;
+  font-weight: 300;
+  margin-bottom: 36px;
+  margin-top: 0px;
+  letter-spacing: 0.2px;
+}
+
+span {
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 300;
   margin-bottom: 36px;
   margin-top: 0px;

@@ -4,7 +4,7 @@ import "./PromoBanner.css"; // Add corresponding CSS file for styling
 const PromoBanner = () => {
   return (
     <div className="promo-banner">
-      <p>Commisions avaliable!</p>
+      <p>Commissions available!</p>
     </div>
   );
 };

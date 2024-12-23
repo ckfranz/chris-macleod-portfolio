@@ -1,0 +1,182 @@
+/* General Styles */
+.commission-info {
+  max-width: 800px;
+  margin: 4rem auto;
+  /* margin-top: 32px; */
+  /* padding: 1.5rem; */
+  /* background-color: #f9f9f9; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  color: #333;
+  /* line-height: 1.6; */
+}
+
+.commission-info h1 {
+  font-size: 2rem;
+  font-weight: 200;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #444;
+  font-family: "Playfair Display", serif;
+}
+
+/* Paragraph Styling */
+p {
+  font-size: 14px !important;
+}
+
+/* List Styling */
+.commission-info ul {
+  font-size: 1rem;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.commission-info ul li::before {
+  content: "•";
+  color: #777;
+  margin-right: 0.5rem;
+}
+
+.commission-info b {
+  font-weight: bold;
+}
+
+/* Link Styling */
+.commission-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.commission-info a:hover {
+  text-decoration: underline;
+}
+
+/* Section Styles */
+.commission-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
+
+.section-image {
+  /* flex-shrink: 0; */
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.section-content {
+  flex: 1;
+  padding-right: 16px;
+}
+
+.commission-section h2 {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+  color: #555;
+  font-weight: 700;
+}
+
+.commission-section h4 {
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.commission-section h5 {
+  padding: 0;
+  margin: 0;
+}
+/* Numbering */
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Adjust size of circle */
+  height: 40px; /* Adjust size of circle */
+  border-radius: 50%; /* Makes the div a circle */
+  background-color: #5e5e5e; /* Circle background color */
+  color: white; /* Number color */
+  font-size: 18px; /* Adjust font size */
+  font-weight: bold; /* Makes the number bold */
+  text-align: center;
+}
+
+.number {
+  display: inline-block;
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.commission-info ul li::before {
+  content: none;
+}
+
+.pricing-row {
+  display: flex;
+  gap: 48px;
+}
+
+@media screen and (max-width: 800px) {
+  .commission-section {
+    display: inline-block;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    text-align: center; /* Aligns child elements horizontally */
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content inside the .step-header */
+    gap: 1rem;
+    width: 100%; /* Optional: make .step-header span full width */
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+
+  .section-content {
+    padding-right: 0;
+  }
+
+  .commission-info h1 {
+    font-size: 1.6rem;
+  }
+
+  .circle {
+    width: 30px; /* Adjust size of circle */
+    height: 30px; /* Adjust size of circle */
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .commission-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .number {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .step-header {
+    gap: 0.5rem;
+  }
+
+  .pricing-row {
+    justify-content: center;
+  }
+}

@@ -19,6 +19,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(currentIndex);
   const [imgLink, setImgLink] = useState("");
   const [imageVisible, setImageVisible] = useState(false);
+  const [startTouch, setStartTouch] = useState(0);
 
   const handleNextImage = () => {
     setCurrentImageIndex((currentImageIndex + 1) % galleryData.length);
@@ -126,9 +127,34 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
   const testimonial = media?.context?.custom?.Testimonial || "";
   const nextImage = galleryData[currentImageIndex];
 
+  // Detect swipe start and end to navigate
+  const handleTouchStart = (e) => {
+    setStartTouch(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault(); // Prevent default scrolling behavior
+  };
+
+  const handleTouchEnd = (e) => {
+    const endTouch = e.changedTouches[0].clientX;
+    if (startTouch - endTouch > 50) {
+      console.log("swipe left");
+      handleNextImage(); // Swipe left (next)
+    } else if (endTouch - startTouch > 50) {
+      console.log("swipe right");
+      handlePrevImage(); // Swipe right (previous)
+    }
+  };
+
   return (
-    <div className="gallery-overlay">
-      <div className={showElements ? "fade-in" : "fade-out"}>
+    <div
+      className="gallery-overlay"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
+    >
+      <div className={`${showElements ? "fade-in" : "fade-out"} fade`}>
         <div className="preview-social">
           <Social />
         </div>
@@ -160,7 +186,7 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
       </div>
       <div className="image-containers">
         {/* TODO: ADD ONCLICK NEXT IMG*/}
-        <div>
+        <div onClick={handleNextImage}>
           <GatsbyImage
             image={image}
             alt={title}
