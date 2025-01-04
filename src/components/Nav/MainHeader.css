@@ -36,7 +36,7 @@ i {
   z-index: 1000;
 
   /* Set a semi-transparent background with a blur */
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(245, 245, 245, 0.5);
   backdrop-filter: blur(30px);
 
   /* Extend the dropdown to the left and right */

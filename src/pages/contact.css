@@ -31,13 +31,9 @@ img,
 }
 
 .contact-img-container {
-  display: flex;
+  width: 100%;
   justify-content: center;
   padding-bottom: 16px;
-}
-
-.contact-img {
-  max-width: 400px;
 }
 
 .cta-form input,
