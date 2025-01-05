@@ -78,6 +78,22 @@ hr {
   border: none;
 }
 
+.pricing-row {
+  display: flex;
+  gap: 24px;
+}
+
+h5 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 900px) {
+  .pricing-row {
+    display: inline-block;
+  }
+}
+
 @media screen and (max-width: 675px) {
   .cols1 {
     display: block;

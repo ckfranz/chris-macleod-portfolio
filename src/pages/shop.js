@@ -76,11 +76,81 @@ const Shop = ({ data }) => {
                 available for commission. Commissions are ideal for gifts, pet
                 memorials, or capturing your favorite animals on paper!
               </p>
-              <p>
+              {/* <p>
                 <Link to="/commissions" className="link">
                   Learn more!
                 </Link>
-              </p>
+              </p> */}
+              <ToggleDropdown title="Pricing">
+                <div className="pricing-row">
+                  <div className="pricing-col">
+                    <h5>Watercolour</h5>
+                    <p className="contact-text">
+                      <ul>
+                        <li className="pricing">
+                          <div>
+                            <span className="label">5x7":</span>
+                            <br />
+                            <span className="label">8x10":</span>
+                            <br />
+                            <span className="label">11x14":</span>
+                            <br />
+                            <span className="label">16x20”:</span>
+                            <br />
+                            <span className="label">18x24":</span>
+                            <br />
+                          </div>
+                          <div>
+                            <span>$175</span>
+                            <br />
+                            <span>$250</span>
+                            <br />
+                            <span>$375</span>
+                            <br />
+                            <span>$500</span>
+                            <br />
+                            <span>$675</span>
+                            <br />
+                          </div>
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                  <div className="pricing-col">
+                    <h5>Chalk Pastel</h5>
+                    <p className="contact-text">
+                      <ul>
+                        <li className="pricing">
+                          <div>
+                            <span className="label">5x7":</span>
+                            <br />
+                            <span className="label">8x10":</span>
+                            <br />
+                            <span className="label">11x14":</span>
+                            <br />
+                            <span className="label">16x20”:</span>
+                            <br />
+                            <span className="label">18x24":</span>
+                            <br />
+                          </div>
+                          <div>
+                            <span>$200</span>
+                            <br />
+                            <span>$275</span>
+                            <br />
+                            <span>$400</span>
+                            <br />
+                            <span>$550</span>
+                            <br />
+                            <span>$725</span>
+                            <br />
+                          </div>
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </ToggleDropdown>
             </div>
           </div>
 

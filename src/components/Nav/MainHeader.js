@@ -67,7 +67,6 @@ const MainHeader = (props) => {
             </div>
           </div>
           <Link to="/shop">shop</Link>
-          <Link to="/commissions">commissions</Link>
           <Link to="/contact">contact</Link>
         </nav>
         <div className="social-container">
@@ -101,15 +100,6 @@ const MainHeader = (props) => {
           <li>
             <Link className="nav-item" href="/shop" onClick={toggleMobileNav}>
               shop
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="nav-item"
-              href="/commissions"
-              onClick={toggleMobileNav}
-            >
-              commissions
             </Link>
           </li>
           <li>
