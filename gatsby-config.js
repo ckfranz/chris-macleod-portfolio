@@ -31,9 +31,9 @@ module.exports = {
     {
       resolve: `gatsby-source-cloudinary`,
       options: {
-        cloudName: process.env.GATSBY_CLOUDINARY_NAME,
-        apiKey: process.env.GATSBY_CLOUDINARY_API_KEY,
-        apiSecret: process.env.GATSBY_CLOUDINARY_API_SECRET,
+        cloudName: process.env.CLOUDINARY_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
         resourceType: `image`,
         prefix: `ChrisPortfolio`,
         // type: `public`,
