@@ -17,7 +17,6 @@ import WikiImg from "./wikiImg";
 const Preview = ({ hidePreview, galleryData, currentIndex }) => {
   const [showElements, setShowElements] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(currentIndex);
-  const [imgLink, setImgLink] = useState("");
   const [imageVisible, setImageVisible] = useState(false);
   const [startTouch, setStartTouch] = useState(0);
 
@@ -77,41 +76,6 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
 
   useEffect(() => {
     setImageVisible(true);
-  }, [currentImageIndex]);
-
-  const numhatchPage = 1;
-  const numhatchPageSize = 1;
-  let numhatchCommonName = "cardinal";
-
-  useEffect(() => {
-    if (media) {
-      const fetchData = async () => {
-        const apiUrl = `https://nuthatch.lastelm.software/v2/birds?page=${numhatchPage}&pageSize=${numhatchPageSize}&name=${numhatchCommonName}&operator=AND`;
-        const numhatchApiKey = process.env.GATSBY_NUMHATCH_API_KEY;
-
-        try {
-          const response = await fetch(apiUrl, {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-              "API-Key": numhatchApiKey,
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error("Network response was not OK");
-          }
-
-          const data = await response.json();
-          const img = data?.entities[0]?.images[0];
-          setImgLink(img);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
-
-      fetchData(); // Initiate the data fetching process
-    }
   }, [currentImageIndex]);
 
   const media = galleryData[currentImageIndex].node;
