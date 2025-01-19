@@ -23,7 +23,6 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
 
   const handleNextImage = () => {
     setCurrentImageIndex((currentImageIndex + 1) % galleryData.length);
-    // console.log(imageVisible);
     setImageVisible(false);
   };
 
@@ -77,7 +76,6 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
   }, [currentImageIndex]);
 
   useEffect(() => {
-    // console.log(imageVisible);
     setImageVisible(true);
   }, [currentImageIndex]);
 
@@ -106,7 +104,6 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
 
           const data = await response.json();
           const img = data?.entities[0]?.images[0];
-          // console.log(img);
           setImgLink(img);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -139,10 +136,8 @@ const Preview = ({ hidePreview, galleryData, currentIndex }) => {
   const handleTouchEnd = (e) => {
     const endTouch = e.changedTouches[0].clientX;
     if (startTouch - endTouch > 50) {
-      console.log("swipe left");
       handleNextImage(); // Swipe left (next)
     } else if (endTouch - startTouch > 50) {
-      console.log("swipe right");
       handlePrevImage(); // Swipe right (previous)
     }
   };

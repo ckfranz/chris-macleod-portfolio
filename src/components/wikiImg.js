@@ -34,7 +34,6 @@ const WikiImg = () => {
       .then((response) => response.json())
       .then((data) => {
         mediaFile = data.query.pages[0].original.source;
-        console.log("Media File URL:", mediaFile);
       })
       .catch((error) => console.error("Error fetching data:", error)),
   ])
@@ -45,7 +44,6 @@ const WikiImg = () => {
           .then((response) => response.json())
           .then((data) => {
             const img = data.query.pages[0].imageinfo[0].thumburl;
-            console.log(img);
             setSpeciesImg(img);
           })
           .catch((error) => console.error("Error fetching data:", error));

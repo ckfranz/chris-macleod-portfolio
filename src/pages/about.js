@@ -12,7 +12,6 @@ const About = ({ data }) => {
   const profile = aboutImages.filter(
     (media) => media.context?.custom?.caption === "profile"
   );
-  console.log(profile);
 
   return (
     <Layout>

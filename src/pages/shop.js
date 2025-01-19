@@ -17,7 +17,6 @@ const Shop = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
   const shopMedia = data.shopImages.nodes;
-  console.log(shopMedia);
 
   // const testimonialsImages = data.testimonialsImages.edges;
   const commissions = shopMedia.filter(
