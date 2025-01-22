@@ -8,7 +8,7 @@ Live site: https://chrismacleodart.com/
 
 ## Overview
 
-This website showcases their artwork, including paintings, sketches, and digital art.
+This website showcases their art and serves to connect customers.
 
 ## Features
 
