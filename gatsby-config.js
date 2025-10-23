@@ -37,7 +37,7 @@ module.exports = {
         resourceType: `image`,
         prefix: `ChrisPortfolio`,
         // type: `public`,
-        maxResults: 150,
+        maxResults: 350,
         context: true,
         tags: true,
       },
