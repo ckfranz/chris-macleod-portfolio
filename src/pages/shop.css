@@ -7,15 +7,21 @@
   flex: 1 1 1;
 } */
 
-.shop-row {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
+.shop-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 16px;
 }
 
 .col {
   flex: 1;
-  padding: 16px;
+}
+
+.shop-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
 }
 
 a.link {
@@ -27,12 +33,11 @@ h1 {
   font-weight: 400;
   font-family: "Playfair Display", serif;
   font-size: 28px;
-  padding: 0 16px;
+  padding: 0 8px;
 }
 
-h3 {
-  font-size: 18px;
-  font-family: "Playfair Display", serif;
+.col h4 {
+  margin: 8px 0 0 0;
 }
 
 /* .image-container {
@@ -50,6 +55,18 @@ h3 {
   display: inline-block;
   align-items: center;
   flex: 0 1 auto;
+  border-radius: 8px;
+}
+
+.col:hover {
+  -webkit-filter: brightness(70%);
+  /* -webkit-filter: opacity(70%); */
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .pricing {
@@ -95,28 +112,15 @@ h5 {
 }
 
 @media screen and (max-width: 675px) {
-  .cols1 {
-    display: block;
-  }
-
-  .col {
-    padding: 0px;
-  }
-
-  .shop-row {
-    display: inline-block; /* Enables flexbox */
-    justify-content: space-between; /* Optional: spaces out the columns with equal space */
-    text-align: center;
+  .shop-gallery {
+    /* justify-content: space-between;
+    text-align: center; */
+    grid-template-columns: repeat(2, 1fr); /* exactly 5 columns */
+    padding: 16px 4px;
   }
 
   .shop-img {
-    padding: 16px;
-    max-width: 70%;
-    width: 175px;
-    height: auto;
-    display: inline-block;
-    align-items: center;
-    flex: 0 1 auto;
+    border-radius: 4px;
   }
 
   h1 {

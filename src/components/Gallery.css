@@ -23,18 +23,32 @@
   cursor: pointer;
 }
 
-.collection {
-  columns: 3;
-  column-gap: 0;
+.my-masonry-grid {
+  display: flex;
+  /* margin-left: -2px; */
+  width: auto;
+}
+.my-masonry-grid_column {
+  /* padding-left: 2px; */
+  background-clip: padding-box;
+}
+.my-masonry-grid_column > div {
+  /* margin-bottom: 2px; */
 }
 
 .thumb {
   position: relative;
-  padding: 4px;
+  padding: 2px;
 }
 
 .thumb:hover .caption {
   opacity: 1;
+}
+
+.card-img,
+.thumb img,
+.gatsby-image-wrapper {
+  display: block !important;
 }
 
 .caption {

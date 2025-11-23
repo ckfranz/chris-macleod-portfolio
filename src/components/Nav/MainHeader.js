@@ -8,10 +8,13 @@ import {
   faAngleDown,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { ChevronDown } from "lucide-react";
 
 import "./MainHeader.css";
 import Social from ".././Social";
 import LinkButton from "../../UIComponents/LinkButton";
+
+import logoBlack from "../../images/assets/logo-black.png";
 
 const MainHeader = (props) => {
   let [mobileNavClass, setMobileNavClass] = useState("");
@@ -40,6 +43,8 @@ const MainHeader = (props) => {
         <h1 className="page-header">
           <Link className="site-header" to="/" onClick={closeMobileNav}>
             Chris Macleod
+            {/* TODO: replace with svgs */}
+            {/* <img src={logoBlack} /> */}
           </Link>
         </h1>
         {/* <FontAwesomeIcon icon={faBars} /> */}
@@ -53,15 +58,16 @@ const MainHeader = (props) => {
         <nav className="nav-bar">
           <Link to="/about">about</Link>
           <div className="collections-dropdown">
-            <a className="nav-item">Collections</a>
+            <a className="nav-item">collections</a>
+            <ChevronDown size={16} strokeWidth={1.5} />
             <div className="collections">
-              <Link className="nav-item" to="/wildlife">
+              <Link className="nav-item" to="/collections/wildlife">
                 wildlife
               </Link>
-              <Link className="nav-item" to="/studies">
+              <Link className="nav-item" to="/collections/studies">
                 studies
               </Link>
-              <Link className="nav-item" to="/pet-portraits">
+              <Link className="nav-item" to="/collections/pet-portraits">
                 pet portraits
               </Link>
               <Link className="nav-item" to="/weekly-sketches">
@@ -69,7 +75,27 @@ const MainHeader = (props) => {
               </Link>
             </div>
           </div>
-          <Link to="/shop">shop</Link>
+          {/* TODO: future shop landing page */}
+          {/* <Link to="/shop">shop</Link> */}
+          <div className="collections-dropdown">
+            <a className="nav-item">commissions</a>
+            <ChevronDown size={16} strokeWidth={1.5} />
+            <div className="collections">
+              <Link className="nav-item" to="/commissions/wildlife-commission">
+                wildlife
+              </Link>
+              <Link
+                className="nav-item"
+                to="/commissions/pet-portraits-commission"
+              >
+                pet portraits
+              </Link>
+              <Link className="nav-item" to="/weekly-sketches">
+                weekly sketches
+              </Link>
+            </div>
+          </div>
+          {/* <Link to="/commissions">commissions</Link> */}
           <Link to="/contact">contact</Link>
         </nav>
         <div className="social-container">
@@ -86,17 +112,17 @@ const MainHeader = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/wildlife" onClick={toggleMobileNav}>
+            <Link to="/collections/wildlife" onClick={toggleMobileNav}>
               wildlife
             </Link>
           </li>
           <li>
-            <Link to="/studies" onClick={toggleMobileNav}>
+            <Link to="/collections/studies" onClick={toggleMobileNav}>
               studies
             </Link>
           </li>
           <li>
-            <Link to="/pet-portraits" onClick={toggleMobileNav}>
+            <Link to="/collections/pet-portraits" onClick={toggleMobileNav}>
               pet portraits
             </Link>
           </li>

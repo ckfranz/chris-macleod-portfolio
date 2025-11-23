@@ -7,7 +7,6 @@ import Gallery from "../components/Gallery";
 import Slideshow from "../components/Slideshow";
 
 import "./index.css";
-import "./wildlife.css";
 
 // Step 2: Define your component
 const IndexPage = () => {
@@ -20,7 +19,7 @@ const IndexPage = () => {
           edges {
             node {
               secure_url
-              gatsbyImageData(placeholder: BLURRED)
+              gatsbyImageData(placeholder: TRACED_SVG)
               context {
                 custom {
                   Medium
@@ -41,7 +40,7 @@ const IndexPage = () => {
     <Layout>
       <div>
         {/* <Slideshow /> */}
-        <section className="section" id="gallery-1">
+        <section className="section">
           <Gallery data={data} />
         </section>
       </div>

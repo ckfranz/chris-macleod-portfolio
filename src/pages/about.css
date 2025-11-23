@@ -10,7 +10,7 @@
 }
 
 .bio {
-  flex: 3;
+  flex: 2;
 }
 
 .about-img-container {
@@ -24,6 +24,10 @@
   max-width: 100%; /* Ensures the image scales down if the container shrinks */
   height: auto; /* Maintains aspect ratio */
   object-fit: contain; /* Keeps the entire image visible while maintaining aspect ratio */
+}
+
+.bio {
+  flex: 2;
 }
 
 .about-text {

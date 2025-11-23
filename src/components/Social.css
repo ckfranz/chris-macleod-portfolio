@@ -1,16 +1,25 @@
-.socials li:not(:last-child) {
-  margin: 0 1.5rem 0 0;
+.socials {
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  gap: 1.5rem; /* spacing between icons */
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
 }
 
 .socials li {
-  display: inline-block;
+  display: flex; /* makes the <a> inside take full height */
+  align-items: center; /* centers the icon within li */
 }
 
-li a {
+.socials a {
   font-size: 16px;
+  color: #323232;
+  display: flex; /* ensures svg inside centers nicely */
+  align-items: center;
 }
 
-.socials,
-.copyright {
-  margin: 1.5rem;
+.socials a:hover {
+  color: var(--dark);
 }

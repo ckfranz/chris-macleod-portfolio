@@ -37,7 +37,7 @@
   font-size: 32px;
   transform: translateY(-50%);
   z-index: 200;
-  color: var(--dark);
+  color: #323232;
 }
 
 .preview-button {
@@ -51,14 +51,14 @@
   right: 32px; /* Adjust the value to move the button horizontally */
   top: 32px;
   font-size: 28px;
-  color: var(--dark);
+  color: #323232;
   /* transform: translateY(-20%); */
 }
 
 .preview-social {
   position: absolute;
-  left: 0px; /* Adjust the value to move the button horizontally */
-  top: 8px;
+  left: 32px; /* Adjust the value to move the button horizontally */
+  top: 0;
 }
 
 .preview-nav-left {

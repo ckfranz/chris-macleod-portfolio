@@ -6,6 +6,12 @@
   --primary: #676767;
   --light: #959595;
   --dark: #434343;
+  --primary-accent-dark: #283314;
+  --primary-accent-light: #dde1d0;
+  --secondary-accent-dark: #171e08;
+  --secondary-accent-light: #767f64;
+  --tertiary-accent: #edece4;
+
   font-family: "Inter", sans-serif;
   /* font-family: "Maleah", sans-serif; */
 }
@@ -38,6 +44,11 @@ a:active {
 html {
   background-color: rgb(255, 254, 252);
 }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 h2 {
   font-weight: 200;
@@ -49,8 +60,8 @@ h2 {
 
 p {
   font-size: 14px;
-  line-height: 20px;
-  font-weight: 300;
+  line-height: 1.6;
+  font-weight: 200;
   margin-bottom: 36px;
   margin-top: 0px;
   letter-spacing: 0.2px;

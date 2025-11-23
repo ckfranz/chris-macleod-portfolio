@@ -52,15 +52,11 @@ const Contact = ({ data }) => {
       <div className="page-container">
         <div className="contact">
           {/* <h2>Contact</h2> */}
-          <h3>Let’s connect!</h3>
+          {/* <h3>Let’s connect!</h3> */}
           <p className="contact-text">
-            <br />
-            Please use the form below to reach out for any inquiries. Whether
-            you are interested in commissioning a piece, purchasing prints or
-            cards, or interested in my artistic process, I would love to hear
-            from you!
+            Please use the form below to reach out for any additional inquiries
+            and feedback. I would love to hear from you!
           </p>
-
           <div className="contact-container">
             <div className="contact-img-container">
               <GatsbyImage
@@ -141,7 +137,11 @@ export const query = graphql`
     ) {
       nodes {
         public_id
-        gatsbyImageData(placeholder: BLURRED)
+        # Large for preview/lightbox (crispy but still reasonable)
+        gatsbyImageData: gatsbyImageData(
+          placeholder: BLURRED
+          transformations: ["f_auto,q_85,w_2000,c_limit"] # up to ~2000px
+        )
         context {
           custom {
             caption

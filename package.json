@@ -33,9 +33,13 @@
     "gatsby-source-cloudinary": "^0.5.1",
     "gatsby-source-filesystem": "^5.12.0",
     "gatsby-transformer-cloudinary": "^4.5.0",
+    "gatsby-transformer-sharp": "^5.12.0",
+    "lucide-react": "^0.541.0",
     "netlify-cms-app": "^2.15.72",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-masonry-component": "^6.3.0",
+    "react-masonry-css": "^1.0.16",
     "swiper": "^11.1.1"
   },
   "resolutions": {

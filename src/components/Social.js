@@ -11,6 +11,7 @@ import {
   faShoppingBag,
   faStore,
 } from "@fortawesome/free-solid-svg-icons";
+import { Instagram, Facebook, Mail } from "lucide-react";
 
 import "./Social.css";
 
@@ -24,17 +25,18 @@ const Social = () => {
     <ul className="socials">
       <li>
         <a href={insagram} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} />
+          {/* <FontAwesomeIcon icon={faInstagram} /> */}
+          <Instagram size={16} strokeWidth={1.5} />
         </a>
       </li>
       <li>
         <a href={facebook} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} />
+          <Facebook size={16} strokeWidth={1.5} />
         </a>
       </li>
       <li>
         <a href={"mailto: " + email} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faEnvelope} />
+          <Mail size={16} strokeWidth={1.5} />
         </a>
       </li>
       {/* <li>
