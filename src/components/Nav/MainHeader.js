@@ -70,13 +70,27 @@ const MainHeader = (props) => {
               <Link className="nav-item" to="/collections/pet-portraits">
                 pet portraits
               </Link>
-              <Link className="nav-item" to="/weekly-sketches">
+              <Link className="nav-item" to="/collections/weekly-sketches">
                 weekly sketches
               </Link>
             </div>
           </div>
           {/* TODO: future shop landing page */}
-          {/* <Link to="/shop">shop</Link> */}
+          <div className="collections-dropdown">
+            <a className="nav-item">shop</a>
+            <ChevronDown size={16} strokeWidth={1.5} />
+            <div className="collections">
+              <Link className="nav-item" to="/shop/shop-originals">
+                originals
+              </Link>
+              <Link className="nav-item" to="/shop/shop-prints">
+                prints
+              </Link>
+              <Link className="nav-item" to="/shop/shop-cards">
+                cards
+              </Link>
+            </div>
+          </div>
           <div className="collections-dropdown">
             <a className="nav-item">commissions</a>
             <ChevronDown size={16} strokeWidth={1.5} />
@@ -132,9 +146,26 @@ const MainHeader = (props) => {
             </Link>
           </li>
           <li>
-            <Link className="nav-item" href="/shop" onClick={toggleMobileNav}>
-              shop
-            </Link>
+            <div className="mobile-submenu">
+              <button className="mobile-submenu-trigger">shop</button>
+              <ul className="mobile-submenu-list">
+                <li>
+                  <Link to="/shop/shop-originals" onClick={toggleMobileNav}>
+                    originals
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/shop/shop-prints" onClick={toggleMobileNav}>
+                    prints
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/shop/shop-cards" onClick={toggleMobileNav}>
+                    cards
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </li>
           <li>
             <Link className="nav-item" to="/contact" onClick={toggleMobileNav}>
