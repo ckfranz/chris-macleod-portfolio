@@ -1,11 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Slideshow from "../components/Slideshow";
-import Gallery from "../components/Gallery";
-import Layout from "../components/Layout";
-
-import "./weekly-sketches.css";
+import Slideshow from "../../components/Slideshow";
+import Gallery from "../../components/Gallery";
+import Layout from "../../components/Layout";
 
 const WeeklySketchesCollection = () => {
   const data = useStaticQuery(
@@ -18,8 +16,20 @@ const WeeklySketchesCollection = () => {
         ) {
           edges {
             node {
+              public_id
               secure_url
-              gatsbyImageData(placeholder: BLURRED)
+              created_at
+              # Thumbnail for grids (fast & small)
+              gatsbyImageDataThumb: gatsbyImageData(
+                placeholder: BLURRED
+                transformations: ["f_auto", "q_auto", "w_400", "c_limit"]
+              )
+
+              # Large for preview/lightbox - more aggressive optimization
+              gatsbyImageDataLarge: gatsbyImageData(
+                placeholder: BLURRED
+                transformations: ["f_auto", "q_auto:good", "w_1400", "c_limit"]
+              )
               context {
                 custom {
                   Medium
@@ -41,7 +51,7 @@ const WeeklySketchesCollection = () => {
       <div>
         {/* <Slideshow /> */}
         <section className="section" id="gallery-1">
-          <Gallery data={data} />
+          <Gallery data={data} title="Weekly Sketches" />
         </section>
       </div>
     </Layout>

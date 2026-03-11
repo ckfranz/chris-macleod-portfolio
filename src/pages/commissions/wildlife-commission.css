@@ -1,0 +1,201 @@
+/* Wildlife Commission Page — mirrors pet-portraits-commission.css */
+.commission-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.commission-page h1 {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0 0 12px 0;
+  color: var(--dark);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.commission-intro {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 56px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+/* Process Steps */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 64px;
+}
+
+.process-step {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 32px 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.process-step:first-child {
+  border-top: 1px solid #ebebeb;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.step-header .step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--dark);
+  color: var(--dark);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 400;
+  flex-shrink: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.step-header h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  color: var(--dark);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.step-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--primary);
+  margin: 0 0 12px 0;
+}
+
+.step-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Pricing Section */
+.pricing-section {
+  background-color: #f7f6f4;
+  padding: 48px 32px;
+  margin: 0 -32px;
+  text-align: center;
+}
+
+.pricing-section h2 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+  color: var(--dark);
+  padding: 0;
+}
+
+.pricing-note {
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+/* CTA */
+.commission-cta {
+  text-align: center;
+  padding: 56px 0 8px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 40px;
+  background-color: var(--dark);
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
+}
+
+.cta-button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Form Button */
+.form-button {
+  display: inline-block;
+  padding: 10px 22px;
+  background-color: transparent;
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 10px 0 18px 0;
+  transition: all 0.2s;
+  border: 1px solid var(--dark);
+}
+
+.form-button:hover {
+  background-color: var(--dark);
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  .commission-page {
+    padding: 32px 20px;
+  }
+
+  .commission-page h1 {
+    font-size: 20px;
+  }
+
+  .commission-intro {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .process-step {
+    padding: 28px 0;
+  }
+
+  .process-steps {
+    margin-bottom: 48px;
+  }
+
+  .pricing-section {
+    padding: 36px 20px;
+    margin: 0 -20px;
+  }
+
+  .form-button {
+    display: block;
+    text-align: center;
+  }
+
+  .commission-cta {
+    padding: 40px 0 8px;
+  }
+}

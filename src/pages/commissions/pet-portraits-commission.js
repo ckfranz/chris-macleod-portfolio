@@ -1,33 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
 import Layout from "../../components/Layout";
-
-import ModalSuccess from "../../components/ModalSuccess";
-import Commission from "../../components/Commission";
-import ToggleDropdown from "../../UIComponents/ToggleDropdown";
-
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Testimonials from "../../components/Testimonials";
 
 import "./pet-portraits-commission.css";
-import Pricing from "../Pricing";
 
 const Commissions = ({ data }) => {
-  const testimonialsImages = data.testimonialsImages.edges;
-  // console.log(data.commissionImages);
-
   const commissionMedia = data.commissionImages.nodes;
 
-  const photo = commissionMedia.filter(
-    (media) => media.context?.custom?.caption === "photo"
-  );
-  const process = commissionMedia.filter(
-    (media) => media.context?.custom?.caption === "process"
-  );
-  const completed = commissionMedia.filter(
-    (media) => media.context?.custom?.caption === "completed"
-  );
   const watercolourSample = commissionMedia.filter(
     (media) => media.context?.custom?.caption === "watercolour"
   );
@@ -35,42 +16,36 @@ const Commissions = ({ data }) => {
     (media) => media.context?.custom?.caption === "chalk-pastel"
   );
 
-  console.log(photo);
-
   return (
     <Layout>
-      <div className="page-container">
-        {/* <Testimonials images={testimonialsImages} /> */}
-        <div className="commission-info">
-          <h1>Pet Portrait Commissions</h1>
-          <div className="commission-section">
-            <GatsbyImage
-              image={getImage(photo[0])}
-              className="section-image"
-              alt="img-name"
-            />
-            {/* <img src="path/to/photograph-image.jpg" alt="Photograph" className="section-image"> */}
-            <div className="section-content">
-              <div className="step-header">
-                <div className="circle">
-                  <span className="number">1</span>
-                </div>
+      <div className="commission-page">
+        <h1>Pet Portrait Commissions</h1>
+        <p className="commission-intro">
+          Commissions are the perfect way to capture your beloved pet in a
+          beautiful, handcrafted portrait. Here's how the process works.
+        </p>
 
-                <h2>Submit an order request</h2>
+        <div className="process-steps">
+          {/* Step 1 */}
+          <div className="process-step">
+            <div className="step-content">
+              <div className="step-header">
+                <span className="step-number">1</span>
+                <h2>Submit an Order Request</h2>
               </div>
-              <p className="contact-text">
+              <p>
                 If you are interested in ordering a pet portrait, please fill
                 out the following form:
               </p>
-              {/* <a
-                href="https://forms.gle/kJCmQMLiw3nHXypJ6"
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScmZfXvF1ERXcm8goMUHUZ6fWc-_aU5RwzqTIOdLbMQutbxKg/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button"
+                className="cta-button"
               >
                 Request a Commission
-              </a>{" "} */}
-              <p className="contact-text">
+              </a>
+              <p>
                 This form will inquire about a number of important details,
                 including: contact information, a photograph, the size, the
                 medium, and number of pets. There will also be a section for any
@@ -79,21 +54,14 @@ const Commissions = ({ data }) => {
             </div>
           </div>
 
-          <div className="commission-section">
-            <GatsbyImage
-              image={getImage(process[0])}
-              className="section-image"
-              alt="img-name"
-            />{" "}
-            <div className="section-content">
+          {/* Step 2 */}
+          <div className="process-step">
+            <div className="step-content">
               <div className="step-header">
-                <div className="circle">
-                  <span className="number">2</span>
-                </div>
-
+                <span className="step-number">2</span>
                 <h2>The Process</h2>
               </div>
-              <p className="contact-text">
+              <p>
                 Once I have reviewed and approved your response to the form, I
                 will reach out to confirm the details of your piece, and respond
                 to any inquiries you may have had. I will also ask for a 40%
@@ -103,21 +71,14 @@ const Commissions = ({ data }) => {
             </div>
           </div>
 
-          <div className="commission-section">
-            <GatsbyImage
-              image={getImage(completed[0])}
-              className="section-image"
-              alt="img-name"
-            />{" "}
-            <div className="section-content">
+          {/* Step 3 */}
+          <div className="process-step">
+            <div className="step-content">
               <div className="step-header">
-                <div className="circle">
-                  <span className="number">3</span>
-                </div>
-
+                <span className="step-number">3</span>
                 <h2>Completed Work</h2>
               </div>
-              <p className="contact-text">
+              <p>
                 Once completed I will send an image of the completed piece,
                 where you will have up to three changes that can be requested.
                 Once the balance of the payment is received, I will send the
@@ -125,105 +86,88 @@ const Commissions = ({ data }) => {
               </p>
             </div>
           </div>
+        </div>
 
-          <div className="commission-section">
-            {/* <GatsbyImage
-              image={getImage(process[0])}
-              className="section-image"
-              alt="img-name"
-            />{" "} */}
-            <div className="section-content">
-              <div className="step-header">
-                {/* <div className="circle">
-                  <span className="number">$</span>
-                </div> */}
-                <h2>Pricing</h2>
-              </div>
-              <div className="pricing-row">
-                <div className="pricing-col">
-                  <h4>Watercolour</h4>
-                  <GatsbyImage
-                    image={getImage(watercolourSample[0])}
-                    className="section-image"
-                    alt="img-name"
-                  />{" "}
-                  <p className="contact-text">
-                    <ul>
-                      <li className="pricing">
-                        <div>
-                          <span className="label">5x7":</span>
-                          <br />
-                          <span className="label">8x10":</span>
-                          <br />
-                          <span className="label">11x14":</span>
-                          <br />
-                          <span className="label">16x20”:</span>
-                          <br />
-                          <span className="label">18x24":</span>
-                          <br />
-                        </div>
-                        <div>
-                          <span>$175</span>
-                          <br />
-                          <span>$250</span>
-                          <br />
-                          <span>$375</span>
-                          <br />
-                          <span>$500</span>
-                          <br />
-                          <span>$675</span>
-                          <br />
-                        </div>
-                      </li>
-                    </ul>
-                  </p>
-                </div>
-                <div className="pricing-col">
-                  <h4>Chalk Pastel</h4>
-                  <GatsbyImage
-                    image={getImage(chalkPastelSample[0])}
-                    className="section-image"
-                    alt="img-name"
-                  />{" "}
-                  <p className="contact-text">
-                    <ul>
-                      <li className="pricing">
-                        <div>
-                          <span className="label">5x7":</span>
-                          <br />
-                          <span className="label">8x10":</span>
-                          <br />
-                          <span className="label">11x14":</span>
-                          <br />
-                          <span className="label">16x20”:</span>
-                          <br />
-                          <span className="label">18x24":</span>
-                          <br />
-                        </div>
-                        <div>
-                          <span>$200</span>
-                          <br />
-                          <span>$275</span>
-                          <br />
-                          <span>$400</span>
-                          <br />
-                          <span>$550</span>
-                          <br />
-                          <span>$725</span>
-                          <br />
-                        </div>
-                      </li>
-                    </ul>
-                  </p>
-                </div>
-              </div>
-              <p className="contact-text">
-                These prices are only for a portrait with a single pet. If you
-                would like an additional pet, please contact me and I’d be happy
-                to discuss pricing!
-              </p>
+        {/* Pricing Section */}
+        <div className="pricing-section">
+          <h2>Pricing</h2>
+          <div className="pricing-grid">
+            {/* Chalk Pastel */}
+            <div className="pricing-card">
+              <h3>Chalk Pastel</h3>
+              <GatsbyImage
+                image={getImage(chalkPastelSample[0])}
+                className="pricing-card-image"
+                alt="Chalk pastel sample"
+              />
+              <ul className="price-list">
+                <li>
+                  <span className="size">5x7"</span>
+                  <span className="price">$200</span>
+                </li>
+                <li>
+                  <span className="size">8x10"</span>
+                  <span className="price">$275</span>
+                </li>
+                <li>
+                  <span className="size">11x14"</span>
+                  <span className="price">$400</span>
+                </li>
+                <li>
+                  <span className="size">16x20"</span>
+                  <span className="price">$550</span>
+                </li>
+                <li>
+                  <span className="size">18x24"</span>
+                  <span className="price">$725</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Watercolour */}
+            <div className="pricing-card">
+              <h3>Watercolour</h3>
+              <GatsbyImage
+                image={getImage(watercolourSample[0])}
+                className="pricing-card-image"
+                alt="Watercolour sample"
+              />
+              <ul className="price-list">
+                <li>
+                  <span className="size">5x7"</span>
+                  <span className="price">$175</span>
+                </li>
+                <li>
+                  <span className="size">8x10"</span>
+                  <span className="price">$250</span>
+                </li>
+                <li>
+                  <span className="size">11x14"</span>
+                  <span className="price">$375</span>
+                </li>
+                <li>
+                  <span className="size">16x20"</span>
+                  <span className="price">$500</span>
+                </li>
+                <li>
+                  <span className="size">18x24"</span>
+                  <span className="price">$675</span>
+                </li>
+              </ul>
             </div>
           </div>
+          <p className="pricing-note">
+            These prices are only for a portrait with a single pet. If you would
+            like an additional pet, please contact me and I'd be happy to
+            discuss pricing!
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="commission-cta">
+          <Link to="/contact" className="cta-button">
+            Request a Commission
+          </Link>
         </div>
       </div>
     </Layout>

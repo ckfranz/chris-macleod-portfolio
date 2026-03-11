@@ -51,8 +51,7 @@ const Contact = ({ data }) => {
     <Layout>
       <div className="page-container">
         <div className="contact">
-          {/* <h2>Contact</h2> */}
-          {/* <h3>Let’s connect!</h3> */}
+          <h1 className="contact-title">Contact</h1>
           <p className="contact-text">
             Please use the form below to reach out for any additional inquiries
             and feedback. I would love to hear from you!

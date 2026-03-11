@@ -5,7 +5,7 @@ import Preview from "./Preview";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Masonry from "react-masonry-css";
 
-const Gallery = ({ data }) => {
+const Gallery = ({ data, title }) => {
   const [showPreview, setShowPreview] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -37,17 +37,6 @@ const Gallery = ({ data }) => {
 
   const hidePreview = useCallback(() => setShowPreview(false), []);
 
-  // Body scroll lock (SSR-safe)
-  useEffect(() => {
-    if (!showPreview) return;
-    if (typeof document === "undefined") return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [showPreview]);
-
   const breakpointColumnsObj = {
     default: 3,
     800: 2,
@@ -55,6 +44,7 @@ const Gallery = ({ data }) => {
 
   return (
     <div className="main">
+      {title && <h1 className="gallery-title">{title}</h1>}
       {showPreview && (
         <Preview
           hidePreview={hidePreview}

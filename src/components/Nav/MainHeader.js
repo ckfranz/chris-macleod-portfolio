@@ -1,40 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import {
-  faBars,
-  faAngleDown,
-  faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { ChevronDown } from "lucide-react";
 
 import "./MainHeader.css";
 import Social from ".././Social";
-import LinkButton from "../../UIComponents/LinkButton";
 
-import logoBlack from "../../images/assets/logo-black.png";
-
-const MainHeader = (props) => {
-  let [mobileNavClass, setMobileNavClass] = useState("");
+const MainHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openSection, setOpenSection] = useState(null);
 
   const closeMobileNav = () => {
     setIsOpen(false);
-    setMobileNavClass("");
+    setOpenSection(null);
     document.body.style.overflow = "auto";
   };
 
   const toggleMobileNav = () => {
-    setIsOpen(!isOpen);
-    if (!isOpen) {
-      setMobileNavClass(mobileNavClass == "" ? "active" : "");
-      document.body.style.overflow = "hidden";
-    } else {
-      setMobileNavClass("");
-      document.body.style.overflow = "auto";
-    }
+    const next = !isOpen;
+    setIsOpen(next);
+    setOpenSection(null);
+    document.body.style.overflow = next ? "hidden" : "auto";
   };
 
   return (
@@ -43,11 +32,8 @@ const MainHeader = (props) => {
         <h1 className="page-header">
           <Link className="site-header" to="/" onClick={closeMobileNav}>
             Chris Macleod
-            {/* TODO: replace with svgs */}
-            {/* <img src={logoBlack} /> */}
           </Link>
         </h1>
-        {/* <FontAwesomeIcon icon={faBars} /> */}
         <button className="nav-menu" onClick={toggleMobileNav}>
           {!isOpen ? (
             <FontAwesomeIcon icon={faBars} />
@@ -75,7 +61,6 @@ const MainHeader = (props) => {
               </Link>
             </div>
           </div>
-          {/* TODO: future shop landing page */}
           <div className="collections-dropdown">
             <a className="nav-item">shop</a>
             <ChevronDown size={16} strokeWidth={1.5} />
@@ -86,9 +71,9 @@ const MainHeader = (props) => {
               <Link className="nav-item" to="/shop/shop-prints">
                 prints
               </Link>
-              <Link className="nav-item" to="/shop/shop-cards">
+              {/* <Link className="nav-item" to="/shop/shop-cards">
                 cards
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="collections-dropdown">
@@ -104,12 +89,8 @@ const MainHeader = (props) => {
               >
                 pet portraits
               </Link>
-              <Link className="nav-item" to="/weekly-sketches">
-                weekly sketches
-              </Link>
             </div>
           </div>
-          {/* <Link to="/commissions">commissions</Link> */}
           <Link to="/contact">contact</Link>
         </nav>
         <div className="social-container">
@@ -117,65 +98,149 @@ const MainHeader = (props) => {
         </div>
       </header>
 
-      {/* ------------------------ MOBILE HEADER ------------------------ */}
-      <nav className={"mobile-nav " + mobileNavClass}>
-        <ul className="nav-list">
-          <li>
-            <Link to="/about" onClick={toggleMobileNav}>
-              about
-            </Link>
-          </li>
-          <li>
-            <Link to="/collections/wildlife" onClick={toggleMobileNav}>
-              wildlife
-            </Link>
-          </li>
-          <li>
-            <Link to="/collections/studies" onClick={toggleMobileNav}>
-              studies
-            </Link>
-          </li>
-          <li>
-            <Link to="/collections/pet-portraits" onClick={toggleMobileNav}>
-              pet portraits
-            </Link>
-          </li>
-          <li>
-            <Link to="/weekly-sketches" onClick={toggleMobileNav}>
-              weekly sketches
-            </Link>
-          </li>
-          <li>
-            <div className="mobile-submenu">
-              <button className="mobile-submenu-trigger">shop</button>
-              <ul className="mobile-submenu-list">
-                <li>
-                  <Link to="/shop/shop-originals" onClick={toggleMobileNav}>
-                    originals
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/shop/shop-prints" onClick={toggleMobileNav}>
-                    prints
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/shop/shop-cards" onClick={toggleMobileNav}>
-                    cards
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <Link className="nav-item" to="/contact" onClick={toggleMobileNav}>
-              contact
-            </Link>
-          </li>
-          <li>
-            <Social />
-          </li>
-        </ul>
+      {/* MOBILE NAV */}
+      <nav className={"mobile-nav" + (isOpen ? " active" : "")}>
+        {/* Main menu */}
+        {!openSection && (
+          <ul className="nav-list">
+            <li>
+              <Link to="/about" onClick={closeMobileNav}>
+                about
+              </Link>
+            </li>
+            <li>
+              <button
+                className="mobile-section-trigger"
+                onClick={() => setOpenSection("collections")}
+              >
+                collections
+              </button>
+            </li>
+            <li>
+              <button
+                className="mobile-section-trigger"
+                onClick={() => setOpenSection("shop")}
+              >
+                shop
+              </button>
+            </li>
+            <li>
+              <button
+                className="mobile-section-trigger"
+                onClick={() => setOpenSection("commissions")}
+              >
+                commissions
+              </button>
+            </li>
+            <li>
+              <Link to="/contact" onClick={closeMobileNav}>
+                contact
+              </Link>
+            </li>
+            <li className="mobile-social">
+              <Social />
+            </li>
+          </ul>
+        )}
+
+        {/* Sub-menu: Collections */}
+        {openSection === "collections" && (
+          <div className="mobile-sub">
+            <button
+              className="mobile-back"
+              onClick={() => setOpenSection(null)}
+              aria-label="Back to main menu"
+            >
+              <ChevronDown size={22} strokeWidth={2} />
+            </button>
+            <ul className="nav-list">
+              <li>
+                <Link to="/collections/wildlife" onClick={closeMobileNav}>
+                  wildlife
+                </Link>
+              </li>
+              <li>
+                <Link to="/collections/studies" onClick={closeMobileNav}>
+                  studies
+                </Link>
+              </li>
+              <li>
+                <Link to="/collections/pet-portraits" onClick={closeMobileNav}>
+                  pet portraits
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/collections/weekly-sketches"
+                  onClick={closeMobileNav}
+                >
+                  weekly sketches
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {/* Sub-menu: Shop */}
+        {openSection === "shop" && (
+          <div className="mobile-sub">
+            <button
+              className="mobile-back"
+              onClick={() => setOpenSection(null)}
+              aria-label="Back to main menu"
+            >
+              <ChevronDown size={22} strokeWidth={2} />
+            </button>
+            <ul className="nav-list">
+              <li>
+                <Link to="/shop/shop-originals" onClick={closeMobileNav}>
+                  originals
+                </Link>
+              </li>
+              <li>
+                <Link to="/shop/shop-prints" onClick={closeMobileNav}>
+                  prints
+                </Link>
+              </li>
+              <li>
+                {/* <Link to="/shop/shop-cards" onClick={closeMobileNav}>
+                  cards
+                </Link> */}
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {/* Sub-menu: Commissions */}
+        {openSection === "commissions" && (
+          <div className="mobile-sub">
+            <button
+              className="mobile-back"
+              onClick={() => setOpenSection(null)}
+              aria-label="Back to main menu"
+            >
+              <ChevronDown size={22} strokeWidth={2} />
+            </button>
+            <ul className="nav-list">
+              <li>
+                <Link
+                  to="/commissions/wildlife-commission"
+                  onClick={closeMobileNav}
+                >
+                  wildlife
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/commissions/pet-portraits-commission"
+                  onClick={closeMobileNav}
+                >
+                  pet portraits
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
     </div>
   );

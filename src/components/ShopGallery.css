@@ -1,0 +1,257 @@
+/* ShopGallery Component */
+
+.shop-main {
+  position: relative;
+  margin: 0 32px;
+}
+
+/* Grid */
+.shop-collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  max-width: 1200px;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 900px) {
+  .shop-collection {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Thumbnail */
+.shop-thumb {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.shop-thumb:hover .shop-card-img {
+  filter: brightness(70%);
+  transition: all 0.3s ease;
+}
+
+.shop-card-img-wrapper {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.shop-card-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.shop-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  padding-top: 8px;
+  min-height: 36px;
+}
+
+.shop-title {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.shop-year,
+.shop-status {
+  font-size: 12px;
+  color: var(--light);
+}
+
+.shop-status {
+  font-style: italic;
+}
+
+/* Banner */
+.shop-banner {
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  padding: 14px 32px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.shop-banner p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--primary);
+  font-style: italic;
+}
+
+.shop-banner a {
+  color: var(--dark);
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+/* Modal */
+.shop-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.shop-modal {
+  background: #f7f6f4;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  padding-top: 36px;
+}
+
+.shop-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  z-index: 10;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-modal-image-wrap {
+  background: #f7f6f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.shop-modal-img {
+  max-width: 100%;
+  max-height: calc(90vh - 220px);
+  object-fit: contain;
+  display: block;
+}
+
+.shop-modal-info {
+  padding: 22px 28px 28px;
+  background: white;
+  border-top: 1px solid #ebebeb;
+}
+
+.shop-modal-info h3 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: var(--dark);
+  margin: 0 0 8px 0;
+}
+
+.shop-modal-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+  margin-bottom: 10px;
+}
+
+.shop-modal-details span {
+  font-size: 12px;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1.8;
+}
+
+.shop-modal-status {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dark);
+  margin: 0 0 18px 0;
+}
+
+.shop-inquiry-btn {
+  display: inline-block;
+  padding: 11px 26px;
+  background: var(--dark);
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.shop-inquiry-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Page wrapper */
+.shop-page {
+  padding-top: 48px;
+}
+
+/* Header (rendered in each shop page) */
+.shop-header {
+  max-width: 580px;
+  margin: 0 auto 48px;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.shop-header h1 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+  color: var(--dark);
+}
+
+.shop-header p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--primary);
+  margin: 0;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 48px;
+  color: var(--light);
+  font-size: 14px;
+}
+
+@media screen and (max-width: 600px) {
+  .shop-page {
+    padding-top: 32px;
+  }
+
+  .shop-main {
+    margin: 0 16px;
+  }
+
+  .shop-header {
+    padding: 0 20px;
+    margin-bottom: 36px;
+  }
+
+  .shop-header h1 {
+    font-size: 20px;
+  }
+}

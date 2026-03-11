@@ -1,51 +1,66 @@
 .page-container {
-  max-width: 1140px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 40px 36px;
 }
 
 .about-container {
   display: flex;
-  gap: 30px;
+  gap: 48px;
+  align-items: flex-start;
 }
 
 .bio {
-  flex: 2;
+  flex: 1;
 }
 
 .about-img-container {
-  justify-content: center;
-  flex: 1;
-  flex-shrink: 0;
-  overflow: hidden;
+  flex: 0 0 320px; /* Fixed width, won't grow or shrink */
+  position: sticky;
+  top: 100px; /* Sticks while scrolling on desktop */
 }
 
 .about-img {
-  max-width: 100%; /* Ensures the image scales down if the container shrinks */
-  height: auto; /* Maintains aspect ratio */
-  object-fit: contain; /* Keeps the entire image visible while maintaining aspect ratio */
+  width: 100%;
+  height: auto;
 }
 
-.bio {
-  flex: 2;
+.bio p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 24px 0;
 }
 
-.about-text {
-  padding: 0 32px;
-  margin-top: 0px;
+.bio p:last-child {
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 800px) {
+  .page-container {
+    padding: 24px 24px;
+  }
+
   .about-container {
-    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
   }
 
   .about-img-container {
-    display: flex;
+    flex: none;
+    width: 100%;
+    max-width: 280px;
+    position: static; /* Remove sticky on mobile */
   }
 
   .about-img {
-    margin: 0 auto 24px auto;
-    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .bio p {
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: left;
   }
 }

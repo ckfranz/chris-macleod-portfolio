@@ -11,28 +11,34 @@ const About = ({ data }) => {
   return (
     <Layout>
       <div className="page-container">
-        {/* <Testimonials images={testimonialsImages} /> */}
         <div className="about-container">
           <div className="about-img-container">
-            <GatsbyImage
-              image={profileImage}
-              alt="Chris Macleod portrait"
-              className="about-img"
-            />
+            {profileImage ? (
+              <GatsbyImage
+                image={profileImage}
+                alt="Chris Macleod portrait"
+                className="about-img"
+              />
+            ) : (
+              <div className="about-img-placeholder">Photo</div>
+            )}
           </div>
           <div className="bio">
-            <p className="contact-text">
+            <p>
               Chris Macleod, born in 2001, is a Canadian wildlife artist based
-              primarily in Guelph, ON. Chris creates lifelike works of art in
-              the style of realism, primarily using chalk pastel or watercolour,
-              and occasionally using acrylic paint paired with coloured pencils.
-              Chris is very passionate about nature and wildlife, as
+              primarily in Guelph, Ontario. Chris creates lifelike works of art
+              in the style of realism, primarily using chalk pastel or
+              watercolour, and occasionally using acrylic paint paired with
+              coloured pencils.
+            </p>
+            <p>
+              Chris is deeply passionate about nature and wildlife, as
               demonstrated through a childhood spent outdoors and a Bachelor of
               Science degree with a major in biological science. This passion is
               where Chris draws much of his artistic inspiration from and is
               reflected in the detailed depictions of wildlife that he creates.
             </p>
-            <p className="contact-text">
+            <p>
               Notably, Chris had the privilege of having his work critiqued by
               renowned wildlife artist Robert Bateman, who praised his talent
               and realistic portrayal. Chris continues to pursue his passion for

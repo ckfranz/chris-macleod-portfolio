@@ -74,6 +74,21 @@ header {
   color: #b0b0b0;
 }
 
+/* Active state — Gatsby auto-applies .active to the matching Link */
+.nav-bar > a.active,
+.collections-dropdown:has(.active) > a {
+  color: var(--dark) !important;
+}
+
+.collections .active {
+  color: var(--dark) !important;
+  font-weight: 400 !important;
+}
+
+.mobile-nav a.active {
+  color: var(--dark) !important;
+}
+
 /* The clickable text inside the trigger */
 .collections-dropdown .nav-item {
   display: inline-flex;
@@ -93,19 +108,22 @@ header {
 .collections {
   position: absolute;
   top: 100%; /* no physical gap */
-  left: 0;
-  min-width: 160px;
+  left: 50%;
+  min-width: 120px; /* narrower dropdown */
+  max-width: 220px; /* avoid overly wide menu */
+  width: max-content;
 
   /* layout of submenu links */
   display: grid; /* keep layout always grid */
   grid-auto-flow: row;
-  gap: 4px;
-  text-align: left;
+  gap: 2px; /* tighter spacing */
+  text-align: center; /* center text inside items */
+  justify-items: center; /* center grid items horizontally */
 
   /* glass look */
   background: rgba(245, 245, 245, 0.5);
   backdrop-filter: blur(30px);
-  padding: 8px;
+  padding: 6px; /* reduced padding */
   border-radius: 10px;
   z-index: 1000;
 
@@ -114,8 +132,8 @@ header {
   opacity: 0;
   pointer-events: none;
 
-  /* visual offset without hover gap */
-  transform: translateY(8px);
+  /* visual offset without hover gap; center horizontally with translateX */
+  transform: translate(-50%, 8px);
   transition: opacity 140ms ease, transform 140ms ease,
     visibility 0s linear 140ms;
 }
@@ -126,7 +144,7 @@ header {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
   transition: opacity 140ms ease, transform 140ms ease, visibility 0s;
 }
 
@@ -144,11 +162,12 @@ header {
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical center list */
-  align-items: center; /* horizontal center */
-  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
   min-height: calc(100vh - 64px);
-  padding-bottom: 96px;
+  padding: 32px 0 80px;
+  gap: 20px;
 }
 
 .mobile-nav a {
@@ -156,6 +175,55 @@ header {
   font-size: 14px !important;
   text-decoration: none;
   color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Drill-down section triggers (look like links) */
+.mobile-section-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 200;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0;
+}
+
+/* Sub-menu wrapper */
+.mobile-sub {
+  position: relative;
+  min-height: calc(100vh - 64px);
+}
+
+/* Back arrow — matches close button (nav-menu) size & position */
+.mobile-back {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(122, 122, 122);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  font-size: 18px;
+}
+
+.mobile-back svg {
+  transform: rotate(90deg);
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-social {
+  margin-top: 8px;
 }
 
 /* --- Responsive --- */
@@ -200,15 +268,14 @@ header {
 
   .mobile-nav {
     display: none; /* hidden until active */
-    position: absolute;
+    position: fixed;
     top: 64px; /* directly under header */
     right: 0;
+    bottom: 0;
     left: 0;
     background-color: #fff;
-    border-radius: 0;
-    box-shadow: none;
     z-index: 10;
-    min-height: calc(100vh - 64px);
+    overflow-y: auto;
   }
 
   .mobile-nav.active {

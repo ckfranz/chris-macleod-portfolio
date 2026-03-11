@@ -1,75 +1,111 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faXmark,
-//   faAngleLeft,
-//   faAngleRight,
-//   faBinoculars,
-// } from "@fortawesome/free-solid-svg-icons";
 
 import "./Preview.css";
 import Social from "./Social";
-import { prepareImage } from "../utils/imageUtils";
 
-// import WikiImg from "./wikiImg";
+const HIDE_UI_AFTER_MS = 5000;
+const PRELOAD_RANGE = 2;
+const FADE_DURATION_MS = 200;
 
-const HIDE_UI_AFTER_MS = 2000;
+const getLargeImageUrl = (media) => {
+  const largeImage = getImage(media?.gatsbyImageDataLarge);
+  return largeImage?.images?.fallback?.src || media?.secure_url || null;
+};
 
 const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
   const [showElements, setShowElements] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(currentIndex);
-  // const [imgLink, setImgLink] = useState("");
-  const [imageVisible, setImageVisible] = useState(false);
+  const [imageVisible, setImageVisible] = useState(true);
   const [startTouch, setStartTouch] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const overlayRef = useRef(null);
   const timeoutRef = useRef(null);
-
-  // keep state in sync if parent changes currentIndex
-  useEffect(() => {
-    setCurrentImageIndex(currentIndex);
-  }, [currentIndex]);
-
-  useEffect(() => {
-    setIsLoading(true);
-  }, [currentImageIndex]);
-
-  const len = galleryData.length;
-  const media = len ? galleryData[currentImageIndex]?.node : null;
-  const { imageData, src } = prepareImage(media, "jpg");
-
-  const key = media.public_id || media.secure_url;
-
+  const fadeTimeoutRef = useRef(null);
   const preloadCacheRef = useRef(new Map());
 
-  const preloadUrl = (url) => {
+  const len = galleryData.length;
+
+  // Preload using the exact same URL we'll render
+  const preloadImage = useCallback((media) => {
+    const url = getLargeImageUrl(media);
     if (!url || preloadCacheRef.current.has(url)) return;
     const img = new Image();
     img.src = url;
     preloadCacheRef.current.set(url, img);
+  }, []);
 
-    // optional cache trimming
-    // if (preloadCacheRef.current.size > 20) {
-    //   const [firstKey] = preloadCacheRef.current.keys();
-    //   preloadCacheRef.current.delete(firstKey);
-    // }
-  };
+  // Preload adjacent images proactively
+  const preloadAdjacentImages = useCallback(
+    (centerIndex) => {
+      if (!len) return;
+      for (let offset = 1; offset <= PRELOAD_RANGE; offset++) {
+        const nextIdx = (centerIndex + offset) % len;
+        const prevIdx = (centerIndex - offset + len) % len;
+        preloadImage(galleryData[nextIdx]?.node);
+        preloadImage(galleryData[prevIdx]?.node);
+      }
+    },
+    [len, galleryData, preloadImage]
+  );
+
+  useEffect(() => {
+    preloadAdjacentImages(currentImageIndex);
+  }, [currentImageIndex, preloadAdjacentImages]);
+
+  useEffect(() => {
+    setCurrentImageIndex(currentIndex);
+  }, [currentIndex]);
+
+  const media = len ? galleryData[currentImageIndex]?.node : null;
+  const largeUrl = getLargeImageUrl(media);
+
+  const navigateToImage = useCallback(
+    (getNextIndex) => {
+      if (!len || isTransitioning) return;
+
+      setIsTransitioning(true);
+      setImageVisible(false);
+
+      // Clear any pending fade timeout
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current);
+      }
+
+      fadeTimeoutRef.current = setTimeout(() => {
+        setCurrentImageIndex(getNextIndex);
+        setIsLoading(true);
+        // Force a reflow before fading in (helps iOS Safari)
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setImageVisible(true);
+            setIsTransitioning(false);
+          });
+        });
+      }, FADE_DURATION_MS);
+    },
+    [len, isTransitioning]
+  );
 
   const handleNextImage = useCallback(() => {
-    if (!len) return;
-    setCurrentImageIndex((i) => (i + 1) % len);
-    setImageVisible(false);
-  }, [len]);
+    navigateToImage((prev) => (prev + 1) % len);
+  }, [navigateToImage, len]);
 
   const handlePrevImage = useCallback(() => {
-    if (!len) return;
-    setCurrentImageIndex((i) => (i - 1 + len) % len);
-    setImageVisible(false);
-  }, [len]);
+    navigateToImage((prev) => (prev - 1 + len) % len);
+  }, [navigateToImage, len]);
+
+  // Cleanup fade timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const clearTimer = () => {
     if (timeoutRef.current) {
@@ -114,30 +150,6 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
   );
 
   useEffect(() => {
-    if (!galleryData?.length) return;
-
-    const len = galleryData.length;
-    const iNext = (currentImageIndex + 1) % len;
-    const iPrev = (currentImageIndex - 1 + len) % len;
-
-    const mediaNext = galleryData[iNext]?.node;
-    const mediaPrev = galleryData[iPrev]?.node;
-
-    const rawNext = mediaNext?.secure_url || mediaNext?.url || null;
-    const rawPrev = mediaPrev?.secure_url || mediaPrev?.url || null;
-
-    const toJpg = (u) =>
-      u
-        ? u.includes("f_auto")
-          ? u.replace("f_auto", "f_jpg")
-          : u.replace("/image/upload/", "/image/upload/f_jpg/")
-        : null;
-
-    preloadUrl(toJpg(rawNext));
-    preloadUrl(toJpg(rawPrev));
-  }, [currentImageIndex, galleryData]);
-
-  useEffect(() => {
     document.addEventListener("mousemove", handleUserInteraction);
     document.addEventListener("click", handleUserInteraction);
     document.addEventListener("keydown", handleKeyDown);
@@ -154,63 +166,47 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
     };
   }, [handleUserInteraction, handleKeyDown]);
 
+  // Prevent touch move on the overlay to stop iOS scroll-through
+  const handleTouchMove = useCallback((e) => {
+    e.preventDefault();
+  }, []);
+
+  // Better iOS scroll lock
   useEffect(() => {
-    setImageVisible(true);
-  }, [currentImageIndex]);
+    if (typeof document === "undefined") return;
 
-  // const numhatchPage = 1;
-  // const numhatchPageSize = 1;
-  // let numhatchCommonName = "cardinal";
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const html = document.documentElement;
 
-  // useEffect(() => {
-  //   if (media) {
-  //     const fetchData = async () => {
-  //       const apiUrl = `https://nuthatch.lastelm.software/v2/birds?page=${numhatchPage}&pageSize=${numhatchPageSize}&name=${numhatchCommonName}&operator=AND`;
-  //       const numhatchApiKey = process.env.GATSBY_NUMHATCH_API_KEY;
+    // Lock body
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
 
-  //       try {
-  //         const response = await fetch(apiUrl, {
-  //           method: "GET",
-  //           headers: {
-  //             Accept: "application/json",
-  //             "API-Key": numhatchApiKey,
-  //           },
-  //         });
+    return () => {
+      // Restore
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.overflow = "";
+      html.style.overflow = "";
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
 
-  //         if (!response.ok) {
-  //           throw new Error("Network response was not OK");
-  //         }
-
-  //         const data = await response.json();
-  //         const img = data?.entities[0]?.images[0];
-  //         // console.log(img);
-  //         setImgLink(img);
-  //       } catch (error) {
-  //         console.error("Error fetching data:", error);
-  //       }
-  //     };
-
-  //     fetchData(); // Initiate the data fetching process
-  //   }
-  // }, [currentImageIndex]);
-
-  console.log("large img ", media);
-  // guard against empty data // TODO: instead, render "Missing Image text or something..."
-  if (!len || !media || (!imageData && !src)) {
-    console.log("failed to get image!");
+  if (!len || !media || !largeUrl) {
     return null;
   }
+
   const title = media?.context?.custom?.caption || "";
   const size = media?.context?.custom?.Size || "";
   const status = media?.context?.custom?.Status || "";
   const year = media?.context?.custom?.Year || "";
-  const medium = media?.context?.custom?.Medium || "";
-  const testimonial = media?.context?.custom?.Testimonial || "";
-  const nextImage = galleryData[currentImageIndex];
-
-  // const handleTouchMove = (e) => {
-  //   e.preventDefault(); // Prevent default scrolling behavior
-  // };
 
   const handleTouchStart = (e) => setStartTouch(e.touches[0].clientX);
   const handleTouchEnd = (e) => {
@@ -227,7 +223,7 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
       tabIndex={-1}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      // onTouchMove={handleTouchMove}
+      onTouchMove={handleTouchMove}
     >
       <div className={`${showElements ? "fade-in" : "fade-out"} fade`}>
         <div className="preview-social">
@@ -243,7 +239,6 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
         <button
           type="button"
           className="preview-nav preview-nav-left preview-button"
-          // disabled={disabled}
           onClick={handlePrevImage}
           aria-label="Previous Slide"
         >
@@ -252,7 +247,6 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
         <button
           type="button"
           className="preview-nav preview-nav-right preview-button"
-          // disabled={disabled}
           onClick={handleNextImage}
           aria-label="Next Slide"
         >
@@ -260,35 +254,25 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
         </button>
       </div>
       <div className="image-containers">
-        {/* TODO: ADD ONCLICK NEXT IMG*/}
-        <div onClick={handleNextImage}>
-          {imageData ? (
-            <GatsbyImage
-              key={key}
-              image={imageData}
-              alt={title || "Artwork preview"}
-              onLoad={() => setIsLoading(false)}
-              className={`responsive-image fade-in-out ${
-                imageVisible ? "fade-in" : "fade-out"
-              }`}
-              imgStyle={{ objectFit: "contain" }}
-              style={{ width: "100%" }}
-              loading="eager"
-              imgAttributes={{ fetchpriority: "high", decoding: "async" }}
-            />
-          ) : src ? (
+        <div
+          onClick={handleNextImage}
+          className={`preview-content fade-in-out ${
+            imageVisible ? "fade-in" : "fade-out"
+          }`}
+        >
+          {largeUrl ? (
             <img
-              key={key}
-              src={src}
+              src={largeUrl}
               alt={title || "Artwork preview"}
               onLoad={() => setIsLoading(false)}
-              className={`responsive-image fade-in-out ${
-                imageVisible ? "fade-in" : "fade-out"
-              }`}
-              style={{ width: "100%", height: "auto", objectFit: "contain" }} // <- contain
+              className="responsive-image"
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
               loading="eager"
               decoding="async"
-              fetchpriority="high"
             />
           ) : (
             <div className="image-missing">Image unavailable</div>
@@ -299,8 +283,6 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
             {status && ` – ${status}`}
           </div>
         </div>
-        {/* <FontAwesomeIcon className="info-icon" icon={faBinoculars} size="lg" /> */}
-        <div className="widthh">{/* <WikiImg /> */}</div>
       </div>
     </div>
   );

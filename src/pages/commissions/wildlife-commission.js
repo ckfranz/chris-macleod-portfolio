@@ -2,69 +2,40 @@ import React from "react";
 import { Link } from "gatsby";
 import Layout from "../../components/Layout";
 
-import ModalSuccess from "../../components/ModalSuccess";
-import Commission from "../../components/Commission";
-import ToggleDropdown from "../../UIComponents/ToggleDropdown";
-
-import { useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Testimonials from "../../components/Testimonials";
-
 import "./wildlife-commission.css";
-import Pricing from "../Pricing";
 
-const Commissions = ({ data }) => {
-  const testimonialsImages = data.testimonialsImages.edges;
-  // console.log(data.commissionImages);
-
-  const commissionMedia = data.commissionImages.nodes;
-
-  const photo = commissionMedia.filter(
-    (media) => media.context?.custom?.caption === "photo"
-  );
-  const process = commissionMedia.filter(
-    (media) => media.context?.custom?.caption === "process"
-  );
-  const completed = commissionMedia.filter(
-    (media) => media.context?.custom?.caption === "completed"
-  );
-
-  // console.log(photo);
-
+const WildlifeCommissions = () => {
   return (
     <Layout>
-      <div className="page-container">
-        {/* <Testimonials images={testimonialsImages} /> */}
-        <div className="commission-info">
-          {/* <h1>How to Commission</h1> */}
-          <div className="commission-section">
-            {/* <GatsbyImage
-              image={getImage(photo[0])}
-              className="section-image"
-              alt="img-name"
-            /> */}
-            {/* <img src="path/to/photograph-image.jpg" alt="Photograph" className="section-image"> */}
-            <div className="section-content">
-              <div className="step-header">
-                <div className="circle">
-                  <span className="number">1</span>
-                </div>
+      <div className="commission-page">
+        <h1>Wildlife Commissions</h1>
+        <p className="commission-intro">
+          Commissions are the perfect way to capture the beauty and spirit of
+          wildlife in a one-of-a-kind, handcrafted piece. Here's how the process
+          works.
+        </p>
 
-                <h2>Submit an order request</h2>
+        <div className="process-steps">
+          {/* Step 1 */}
+          <div className="process-step">
+            <div className="step-content">
+              <div className="step-header">
+                <span className="step-number">1</span>
+                <h2>Submit an Order Request</h2>
               </div>
-              <p className="contact-text">
+              <p>
                 If you are interested in ordering a piece, please fill out the
-                following form: https://forms.gle/kJCmQMLiw3nHXypJ6
+                following form:
               </p>
-              {/* <a
+              <a
                 href="https://forms.gle/kJCmQMLiw3nHXypJ6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button"
+                className="cta-button"
               >
                 Request a Commission
-              </a>{" "} */}
-              <p className="contact-text">
+              </a>
+              <p>
                 This form will inquire about a number of important details,
                 including: contact information, the size, the style, and a brief
                 description of what you are looking for. There will also be a
@@ -73,21 +44,14 @@ const Commissions = ({ data }) => {
             </div>
           </div>
 
-          <div className="commission-section">
-            {/* <GatsbyImage
-              image={getImage(process[0])}
-              className="section-image"
-              alt="img-name"
-            />{" "} */}
-            <div className="section-content">
+          {/* Step 2 */}
+          <div className="process-step">
+            <div className="step-content">
               <div className="step-header">
-                <div className="circle">
-                  <span className="number">2</span>
-                </div>
-
+                <span className="step-number">2</span>
                 <h2>The Process</h2>
               </div>
-              <p className="contact-text">
+              <p>
                 Once I have reviewed and approved your response to the form, I
                 will reach out to confirm the details of your piece, and respond
                 to any inquiries you may have had. At this point, I will confirm
@@ -99,21 +63,14 @@ const Commissions = ({ data }) => {
             </div>
           </div>
 
-          <div className="commission-section">
-            {/* <GatsbyImage
-              image={getImage(completed[0])}
-              className="section-image"
-              alt="img-name"
-            />{" "} */}
-            <div className="section-content">
+          {/* Step 3 */}
+          <div className="process-step">
+            <div className="step-content">
               <div className="step-header">
-                <div className="circle">
-                  <span className="number">3</span>
-                </div>
-
+                <span className="step-number">3</span>
                 <h2>Completed Work</h2>
               </div>
-              <p className="contact-text">
+              <p>
                 Once completed I will send an image of the completed piece,
                 where you will have up to three changes that can be requested.
                 Once the balance of the payment is received, I will send the
@@ -121,65 +78,27 @@ const Commissions = ({ data }) => {
               </p>
             </div>
           </div>
+        </div>
 
-          <div className="commission-section">
-            {/* <GatsbyImage
-              image={getImage(process[0])}
-              className="section-image"
-              alt="img-name"
-            />{" "} */}
-            <div className="section-content">
-              <div className="step-header">
-                {/* <div className="circle">
-                  <span className="number">$</span>
-                </div> */}
-                <h2>Pricing</h2>
-              </div>
-              <p className="contact-text">
-                The pricing of wildlife commissions varies greatly depending on
-                size and medium. Please reach out with your desired commission
-                details via the order request form, and I will send you a quote
-                shortly!
-              </p>
-            </div>
-          </div>
+        {/* Pricing Section */}
+        <div className="pricing-section">
+          <h2>Pricing</h2>
+          <p className="pricing-note">
+            The pricing of wildlife commissions varies greatly depending on size
+            and medium. Please reach out with your desired commission details
+            via the order request form, and I will send you a quote shortly!
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="commission-cta">
+          <Link to="/contact" className="cta-button">
+            Request a Commission
+          </Link>
         </div>
       </div>
     </Layout>
   );
 };
 
-export default Commissions;
-
-export const query = graphql`
-  query {
-    testimonialsImages: allCloudinaryMedia(
-      filter: { tags: { in: ["testimonials"] } }
-    ) {
-      edges {
-        node {
-          secure_url
-          gatsbyImageData(placeholder: TRACED_SVG)
-          context {
-            custom {
-              Testimonial
-            }
-          }
-        }
-      }
-    }
-    commissionImages: allCloudinaryMedia(
-      filter: { public_id: { glob: "ChrisPortfolio/Commission/*" } }
-    ) {
-      nodes {
-        public_id
-        gatsbyImageData(placeholder: TRACED_SVG)
-        context {
-          custom {
-            caption
-          }
-        }
-      }
-    }
-  }
-`;
+export default WildlifeCommissions;
