@@ -8,7 +8,7 @@
 /* Grid */
 .shop-collection {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   max-width: 1200px;
   gap: 24px;
   margin: 0 auto;
@@ -29,7 +29,10 @@
 
 .shop-thumb:hover .shop-card-img {
   filter: brightness(70%);
-  transition: all 0.3s ease;
+}
+
+.shop-thumb:hover .shop-title {
+  color: var(--primary);
 }
 
 .shop-card-img-wrapper {
@@ -46,6 +49,7 @@
   width: auto;
   height: auto;
   object-fit: contain;
+  transition: filter 0.3s ease;
 }
 
 .shop-caption {
@@ -54,14 +58,14 @@
   align-items: center;
   text-align: center;
   gap: 2px;
-  padding-top: 8px;
-  min-height: 36px;
+  padding: 8px 0 16px;
 }
 
 .shop-title {
   font-size: 13px;
   font-weight: 400;
   color: var(--dark);
+  transition: color 0.3s ease;
 }
 
 .shop-year,
@@ -107,6 +111,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
+  overflow-y: auto;
 }
 
 .shop-modal {
@@ -115,6 +120,7 @@
   width: 100%;
   position: relative;
   padding-top: 36px;
+  margin: auto;
 }
 
 .shop-modal-close {
@@ -134,17 +140,31 @@
 
 .shop-modal-image-wrap {
   background: #f7f6f4;
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   padding: 16px;
 }
 
 .shop-modal-img {
+  grid-area: 1 / 1;
   max-width: 100%;
   max-height: calc(90vh - 220px);
   object-fit: contain;
   display: block;
+}
+
+.shop-modal-img-thumb.hidden {
+  opacity: 0;
+}
+
+.shop-modal-img-full {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.shop-modal-img-full.loaded {
+  opacity: 1;
 }
 
 .shop-modal-info {

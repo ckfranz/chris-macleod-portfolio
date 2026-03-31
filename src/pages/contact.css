@@ -140,11 +140,12 @@ img,
   .contact-img {
     display: block !important;
     width: 300px;
-    margin: 0 auto 48px auto;
+    margin: 48px auto 48px auto;
   }
 
   .contact-img-container {
     display: block;
     padding-bottom: 0;
+    order: 2;
   }
 }

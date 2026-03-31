@@ -1,0 +1,87 @@
+.collaborations {
+  padding-top: 48px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.collaborations-title {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0 0 48px 0;
+  padding: 0;
+  color: var(--dark);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.collab-section {
+  margin-bottom: 48px;
+}
+
+.collab-heading {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dark);
+  border-bottom: 1px solid #ebebeb;
+  padding: 0 0 12px 0;
+  margin: 0 0 24px 0;
+}
+
+.collab-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.collab-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.collab-project,
+.collab-partner {
+  margin: 0;
+}
+
+.collab-project {
+  font-size: 15px;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.collab-link {
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.collab-link:hover {
+  color: var(--primary);
+}
+
+.collab-partner {
+  font-size: 13px;
+  color: var(--primary);
+  font-style: italic;
+}
+
+@media screen and (max-width: 600px) {
+  .collaborations {
+    padding-top: 32px;
+  }
+
+  .collaborations-title {
+    font-size: 20px;
+    margin-bottom: 36px;
+  }
+
+  .collab-section {
+    margin-bottom: 36px;
+  }
+}

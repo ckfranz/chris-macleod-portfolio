@@ -43,12 +43,22 @@ const MainHeader = () => {
         </button>
         <nav className="nav-bar">
           <Link to="/about">about</Link>
+          <Link to="/collaborations">collaborations</Link>
           <div className="collections-dropdown">
             <a className="nav-item">collections</a>
             <ChevronDown size={16} strokeWidth={1.5} />
             <div className="collections">
               <Link className="nav-item" to="/collections/wildlife">
                 wildlife
+              </Link>
+              <Link className="nav-item" to="/collections/watercolour">
+                watercolour
+              </Link>
+              <Link className="nav-item" to="/collections/vintage-encyclopedia">
+                vintage encyclopedia
+              </Link>
+              <Link className="nav-item" to="/collections/pastel">
+                pastel
               </Link>
               <Link className="nav-item" to="/collections/studies">
                 studies
@@ -109,6 +119,11 @@ const MainHeader = () => {
               </Link>
             </li>
             <li>
+              <Link to="/collaborations" onClick={closeMobileNav}>
+                collaborations
+              </Link>
+            </li>
+            <li>
               <button
                 className="mobile-section-trigger"
                 onClick={() => setOpenSection("collections")}
@@ -157,6 +172,21 @@ const MainHeader = () => {
               <li>
                 <Link to="/collections/wildlife" onClick={closeMobileNav}>
                   wildlife
+                </Link>
+              </li>
+              <li>
+                <Link to="/collections/watercolour" onClick={closeMobileNav}>
+                  watercolour
+                </Link>
+              </li>
+              <li>
+                <Link to="/collections/vintage-encyclopedia" onClick={closeMobileNav}>
+                  vintage encyclopedia
+                </Link>
+              </li>
+              <li>
+                <Link to="/collections/pastel" onClick={closeMobileNav}>
+                  pastel
                 </Link>
               </li>
               <li>

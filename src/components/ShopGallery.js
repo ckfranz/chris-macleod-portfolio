@@ -6,6 +6,7 @@ import { X } from "lucide-react";
 
 const ShopGallery = ({ data, showStatus = true }) => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const [fullResLoaded, setFullResLoaded] = useState(false);
 
   // Sort once per data change
   const galleryData = useMemo(() => {
@@ -27,6 +28,7 @@ const ShopGallery = ({ data, showStatus = true }) => {
   }, [data]);
 
   const openItemModal = useCallback((media) => {
+    setFullResLoaded(false);
     setSelectedItem(media);
     document.body.style.overflow = "hidden";
   }, []);
@@ -79,6 +81,17 @@ const ShopGallery = ({ data, showStatus = true }) => {
             <div className="shop-modal-image-wrap">
               <img
                 src={
+                  selectedItem.gatsbyImageDataThumb?.images?.fallback?.src ||
+                  selectedItem.secure_url
+                }
+                alt={selectedItem.context?.custom?.caption || "Artwork"}
+                className={
+                  "shop-modal-img shop-modal-img-thumb" +
+                  (fullResLoaded ? " hidden" : "")
+                }
+              />
+              <img
+                src={
                   selectedItem.secure_url?.includes("/upload/")
                     ? selectedItem.secure_url.replace(
                         "/upload/",
@@ -87,7 +100,11 @@ const ShopGallery = ({ data, showStatus = true }) => {
                     : selectedItem.secure_url
                 }
                 alt={selectedItem.context?.custom?.caption || "Artwork"}
-                className="shop-modal-img"
+                className={
+                  "shop-modal-img shop-modal-img-full" +
+                  (fullResLoaded ? " loaded" : "")
+                }
+                onLoad={() => setFullResLoaded(true)}
               />
             </div>
 

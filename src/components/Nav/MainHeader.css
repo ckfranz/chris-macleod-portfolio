@@ -120,11 +120,9 @@ header {
   text-align: center; /* center text inside items */
   justify-items: center; /* center grid items horizontally */
 
-  /* glass look */
-  background: rgba(245, 245, 245, 0.5);
-  backdrop-filter: blur(30px);
-  padding: 6px; /* reduced padding */
-  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  padding: 10px 8px;
   z-index: 1000;
 
   /* hidden state (no clicks) */

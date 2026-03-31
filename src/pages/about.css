@@ -36,6 +36,75 @@
   margin-bottom: 0;
 }
 
+/* Collaborations */
+.collab-wrapper {
+  margin-top: 48px;
+  border-top: 1px solid #ebebeb;
+  padding-top: 36px;
+}
+
+.collab-title {
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dark);
+  margin: 0 0 28px 0;
+  padding: 0;
+}
+
+.collab-section {
+  margin-top: 24px;
+}
+
+.collab-heading {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--primary);
+  margin: 0 0 12px 0;
+}
+
+.collab-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.collab-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.collab-project,
+.collab-partner {
+  margin: 0;
+}
+
+.collab-project {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.7;
+}
+
+.collab-link {
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.collab-link:hover {
+  color: var(--primary);
+}
+
+.collab-partner {
+  font-size: 13px;
+  color: var(--primary);
+  font-style: italic;
+}
+
 @media screen and (max-width: 800px) {
   .page-container {
     padding: 24px 24px;

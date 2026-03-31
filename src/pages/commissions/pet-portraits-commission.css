@@ -83,8 +83,10 @@
 }
 
 .step-content .cta-button {
-  display: inline-block;
-  margin: 10px 0 18px;
+  display: block;
+  width: fit-content;
+  margin: 20px auto 24px;
+  text-align: center;
 }
 
 .step-content p {
