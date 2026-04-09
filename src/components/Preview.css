@@ -117,6 +117,12 @@
   flex-shrink: 0; /* Prevent caption from being squished */
 }
 
+.preview-status {
+  font-style: italic;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 /* This is for additional info:  */
 
 .species-photo {

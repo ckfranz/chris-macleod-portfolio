@@ -36,6 +36,7 @@ const WeeklySketchesCollection = () => {
                   Size
                   Status
                   Year
+                  Favourite
                   caption
                 }
               }

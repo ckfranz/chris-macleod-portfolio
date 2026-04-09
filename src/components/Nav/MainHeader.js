@@ -48,9 +48,6 @@ const MainHeader = () => {
             <a className="nav-item">collections</a>
             <ChevronDown size={16} strokeWidth={1.5} />
             <div className="collections">
-              <Link className="nav-item" to="/collections/wildlife">
-                wildlife
-              </Link>
               <Link className="nav-item" to="/collections/watercolour">
                 watercolour
               </Link>
@@ -169,11 +166,6 @@ const MainHeader = () => {
               <ChevronDown size={22} strokeWidth={2} />
             </button>
             <ul className="nav-list">
-              <li>
-                <Link to="/collections/wildlife" onClick={closeMobileNav}>
-                  wildlife
-                </Link>
-              </li>
               <li>
                 <Link to="/collections/watercolour" onClick={closeMobileNav}>
                   watercolour

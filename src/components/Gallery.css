@@ -80,6 +80,12 @@
   cursor: pointer;
 }
 
+.caption-status {
+  font-style: italic;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 .hide-gallery {
   overflow: hidden;
 }

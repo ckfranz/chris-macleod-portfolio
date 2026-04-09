@@ -34,6 +34,7 @@ const WildlifeCollection = () => {
                   Size
                   Status
                   Year
+                  Favourite
                   caption
                 }
               }

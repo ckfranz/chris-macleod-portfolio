@@ -280,7 +280,11 @@ const Preview = ({ hidePreview, galleryData = [], currentIndex = 0 }) => {
           <div className="info">
             {[title, year].filter(Boolean).join(", ")}
             {size && ` (${size})`}
-            {status && ` – ${status}`}
+            {status && (
+              <span className="preview-status">
+                {` – ${status.charAt(0) + status.slice(1).toLowerCase()}`}
+              </span>
+            )}
           </div>
         </div>
       </div>

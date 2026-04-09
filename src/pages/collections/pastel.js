@@ -30,6 +30,7 @@ const PastelCollection = () => {
                   Size
                   Status
                   Year
+                  Favourite
                   caption
                 }
               }

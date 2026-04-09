@@ -78,57 +78,65 @@ const ShopGallery = ({ data, showStatus = true }) => {
               <X size={20} strokeWidth={1.5} />
             </button>
 
-            <div className="shop-modal-image-wrap">
-              <img
-                src={
-                  selectedItem.gatsbyImageDataThumb?.images?.fallback?.src ||
-                  selectedItem.secure_url
-                }
-                alt={selectedItem.context?.custom?.caption || "Artwork"}
-                className={
-                  "shop-modal-img shop-modal-img-thumb" +
-                  (fullResLoaded ? " hidden" : "")
-                }
-              />
-              <img
-                src={
-                  selectedItem.secure_url?.includes("/upload/")
-                    ? selectedItem.secure_url.replace(
-                        "/upload/",
-                        "/upload/f_auto,q_80,w_900,c_limit/"
-                      )
-                    : selectedItem.secure_url
-                }
-                alt={selectedItem.context?.custom?.caption || "Artwork"}
-                className={
-                  "shop-modal-img shop-modal-img-full" +
-                  (fullResLoaded ? " loaded" : "")
-                }
-                onLoad={() => setFullResLoaded(true)}
-              />
-            </div>
-
-            <div className="shop-modal-info">
-              <h3>{selectedItem.context?.custom?.caption || "Untitled"}</h3>
-              <div className="shop-modal-details">
-                {selectedItem.context?.custom?.Year && (
-                  <span>{selectedItem.context.custom.Year}</span>
-                )}
-                {selectedItem.context?.custom?.Size && (
-                  <span>{selectedItem.context.custom.Size}</span>
-                )}
-                {selectedItem.context?.custom?.Medium && (
-                  <span>{selectedItem.context.custom.Medium}</span>
-                )}
+            <div className="shop-modal-body">
+              <div className="shop-modal-image-wrap">
+                <img
+                  src={
+                    selectedItem.gatsbyImageDataThumb?.images?.fallback?.src ||
+                    selectedItem.secure_url
+                  }
+                  alt={selectedItem.context?.custom?.caption || "Artwork"}
+                  className={
+                    "shop-modal-img shop-modal-img-thumb" +
+                    (fullResLoaded ? " hidden" : "")
+                  }
+                />
+                <img
+                  src={
+                    selectedItem.secure_url?.includes("/upload/")
+                      ? selectedItem.secure_url.replace(
+                          "/upload/",
+                          "/upload/f_auto,q_80,w_900,c_limit/"
+                        )
+                      : selectedItem.secure_url
+                  }
+                  alt={selectedItem.context?.custom?.caption || "Artwork"}
+                  className={
+                    "shop-modal-img shop-modal-img-full" +
+                    (fullResLoaded ? " loaded" : "")
+                  }
+                  onLoad={() => setFullResLoaded(true)}
+                />
               </div>
-              {showStatus && selectedItem.context?.custom?.Status && (
-                <p className="shop-modal-status">
-                  {selectedItem.context.custom.Status}
-                </p>
-              )}
-              <a href="/contact" className="shop-inquiry-btn">
-                Inquire About This Piece
-              </a>
+
+              <div className="shop-modal-info">
+                <h3>{selectedItem.context?.custom?.caption || "Untitled"}</h3>
+                <div className="shop-modal-details">
+                  {selectedItem.context?.custom?.Year && (
+                    <span>{selectedItem.context.custom.Year}</span>
+                  )}
+                  {selectedItem.context?.custom?.Size && (
+                    <span>{selectedItem.context.custom.Size}</span>
+                  )}
+                  {selectedItem.context?.custom?.Medium && (
+                    <span>{selectedItem.context.custom.Medium}</span>
+                  )}
+                </div>
+                {showStatus && selectedItem.context?.custom?.Status && (
+                  <p className="shop-modal-status">
+                    {selectedItem.context.custom.Status.charAt(0) +
+                      selectedItem.context.custom.Status.slice(1).toLowerCase()}
+                  </p>
+                )}
+                {selectedItem.context?.custom?.Price && (
+                  <p className="shop-modal-price">
+                    {selectedItem.context.custom.Price}
+                  </p>
+                )}
+                <a href="/contact" className="shop-inquiry-btn">
+                  Inquire About This Piece
+                </a>
+              </div>
             </div>
           </div>
         </div>

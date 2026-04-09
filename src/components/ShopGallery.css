@@ -111,16 +111,13 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  overflow-y: auto;
 }
 
 .shop-modal {
   background: #f7f6f4;
-  max-width: 520px;
+  max-width: 820px;
   width: 100%;
   position: relative;
-  padding-top: 36px;
-  margin: auto;
 }
 
 .shop-modal-close {
@@ -138,18 +135,25 @@
   justify-content: center;
 }
 
+.shop-modal-body {
+  display: flex;
+  align-items: stretch;
+}
+
 .shop-modal-image-wrap {
   background: #f7f6f4;
   display: grid;
   align-items: center;
   justify-items: center;
   padding: 16px;
+  flex: 1 1 60%;
+  min-width: 0;
 }
 
 .shop-modal-img {
   grid-area: 1 / 1;
   max-width: 100%;
-  max-height: calc(90vh - 220px);
+  max-height: calc(100vh - 140px);
   object-fit: contain;
   display: block;
 }
@@ -170,7 +174,36 @@
 .shop-modal-info {
   padding: 22px 28px 28px;
   background: white;
-  border-top: 1px solid #ebebeb;
+  border-left: 1px solid #ebebeb;
+  flex: 0 0 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 680px) {
+  .shop-modal {
+    max-width: 520px;
+    padding-top: 36px;
+  }
+
+  .shop-modal-body {
+    flex-direction: column;
+  }
+
+  .shop-modal-image-wrap {
+    flex: none;
+  }
+
+  .shop-modal-img {
+    max-height: calc(100vh - 340px);
+  }
+
+  .shop-modal-info {
+    flex: none;
+    border-left: none;
+    border-top: 1px solid #ebebeb;
+  }
 }
 
 .shop-modal-info h3 {
@@ -196,9 +229,15 @@
 }
 
 .shop-modal-status {
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--primary);
+  margin: 0 0 18px 0;
+}
+
+.shop-modal-price {
+  font-size: 16px;
+  font-weight: 400;
   color: var(--dark);
   margin: 0 0 18px 0;
 }
@@ -246,6 +285,40 @@
   font-size: 15px;
   line-height: 1.8;
   color: var(--primary);
+  margin: 0;
+}
+
+/* Prints pricing */
+.prints-price-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px auto 0;
+  max-width: 260px;
+}
+
+.prints-price-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.prints-price-list li:last-child {
+  border-bottom: none;
+}
+
+.prints-size {
+  color: var(--dark);
+  font-weight: 300;
+  margin: 0;
+}
+
+.prints-price {
+  font-weight: 400;
+  color: var(--dark);
   margin: 0;
 }
 

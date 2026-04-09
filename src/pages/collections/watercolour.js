@@ -30,6 +30,7 @@ const WatercolourCollection = () => {
                   Size
                   Status
                   Year
+                  Favourite
                   caption
                 }
               }

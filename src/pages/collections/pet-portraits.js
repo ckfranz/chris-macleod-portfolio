@@ -36,6 +36,7 @@ const PetPortraits = () => {
                   Size
                   Status
                   Year
+                  Favourite
                   caption
                 }
               }

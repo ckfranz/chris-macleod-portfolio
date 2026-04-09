@@ -39,6 +39,7 @@ const ShopOriginals = () => {
                   Size
                   Status
                   Year
+                  Price
                   caption
                   Testimonial
                 }
@@ -60,7 +61,7 @@ const ShopOriginals = () => {
             authenticity.
           </p>
         </div>
-        <ShopGallery data={data} />
+        <ShopGallery data={data} showStatus={false} />
       </div>
     </Layout>
   );

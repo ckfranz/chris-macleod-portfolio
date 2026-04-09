@@ -14,6 +14,12 @@ const Gallery = ({ data, title }) => {
   const galleryData = useMemo(() => {
     const edges = data?.allCloudinaryMedia?.edges ?? [];
     return edges.slice().sort((a, b) => {
+      // Favourites always come first
+      const favA = a.node.context?.custom?.Favourite === "Yes";
+      const favB = b.node.context?.custom?.Favourite === "Yes";
+      if (favA && !favB) return -1;
+      if (!favA && favB) return 1;
+
       const yearA = parseInt(a.node.context?.custom?.Year);
       const yearB = parseInt(b.node.context?.custom?.Year);
       const hasYearA = !Number.isNaN(yearA);
@@ -115,7 +121,11 @@ const Gallery = ({ data, title }) => {
                 <div className="caption">
                   {[title, year].filter(Boolean).join(", ")}
                   {size && ` (${size})`}
-                  {status && ` – ${status}`}
+                  {status && (
+                    <span className="caption-status">
+                      {` – ${status.charAt(0) + status.slice(1).toLowerCase()}`}
+                    </span>
+                  )}
                 </div>
               </div>
             );

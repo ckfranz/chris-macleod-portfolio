@@ -30,6 +30,7 @@ const VintageEncyclopediaCollection = () => {
                   Size
                   Status
                   Year
+                  Favourite
                   caption
                 }
               }
