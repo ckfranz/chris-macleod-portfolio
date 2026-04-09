@@ -200,7 +200,9 @@
 }
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 14px 40px;
   background-color: var(--dark);
   color: white;

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
 import Layout from "../../components/Layout";
 import { graphql } from "gatsby";
+import { ExternalLink } from "lucide-react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import "./pet-portraits-commission.css";
@@ -43,7 +43,7 @@ const Commissions = ({ data }) => {
                 rel="noopener noreferrer"
                 className="cta-button"
               >
-                Request a Commission
+                Request a Commission <ExternalLink size={13} strokeWidth={1.5} />
               </a>
               <p>
                 This form will inquire about a number of important details,
@@ -165,9 +165,14 @@ const Commissions = ({ data }) => {
 
         {/* CTA */}
         <div className="commission-cta">
-          <Link to="/contact" className="cta-button">
-            Request a Commission
-          </Link>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScmZfXvF1ERXcm8goMUHUZ6fWc-_aU5RwzqTIOdLbMQutbxKg/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            Request a Commission <ExternalLink size={13} strokeWidth={1.5} />
+          </a>
         </div>
       </div>
     </Layout>

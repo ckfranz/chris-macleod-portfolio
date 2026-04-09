@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "gatsby";
 import Layout from "../../components/Layout";
+import { ExternalLink } from "lucide-react";
 
 import "./wildlife-commission.css";
 
@@ -33,7 +33,7 @@ const WildlifeCommissions = () => {
                 rel="noopener noreferrer"
                 className="cta-button"
               >
-                Request a Commission
+                Request a Commission <ExternalLink size={13} strokeWidth={1.5} />
               </a>
               <p>
                 This form will inquire about a number of important details,
@@ -92,9 +92,14 @@ const WildlifeCommissions = () => {
 
         {/* CTA */}
         <div className="commission-cta">
-          <Link to="/contact" className="cta-button">
-            Request a Commission
-          </Link>
+          <a
+            href="https://forms.gle/kJCmQMLiw3nHXypJ6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            Request a Commission <ExternalLink size={13} strokeWidth={1.5} />
+          </a>
         </div>
       </div>
     </Layout>
