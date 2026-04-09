@@ -57,25 +57,22 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2px;
+  gap: 3px;
   padding: 8px 0 16px;
 }
 
-.shop-title {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--dark);
-  transition: color 0.3s ease;
-}
-
-.shop-year,
-.shop-status {
+.shop-caption span {
   font-size: 12px;
-  color: var(--light);
+  font-weight: 300;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1.4;
 }
 
-.shop-status {
-  font-style: italic;
+.shop-title {
+  color: var(--dark);
+  font-weight: 400;
+  transition: color 0.3s ease;
 }
 
 /* Banner */

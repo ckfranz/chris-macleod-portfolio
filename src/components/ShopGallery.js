@@ -146,6 +146,9 @@ const ShopGallery = ({ data, showStatus = true }) => {
         {galleryData.map((edge, index) => {
           const media = edge.node;
           const title = media.context?.custom?.caption || "";
+          const size = media.context?.custom?.Size || "";
+          const medium = media.context?.custom?.Medium || "";
+          const price = media.context?.custom?.Price || "";
 
           const imageData = getImage(media?.gatsbyImageDataThumb);
           const fallbackSrc = media?.secure_url;
@@ -193,6 +196,12 @@ const ShopGallery = ({ data, showStatus = true }) => {
 
               <div className="shop-caption">
                 <span className="shop-title">{title || "Untitled"}</span>
+                {(size || medium) && (
+                  <span className="shop-meta">
+                    {[medium, size].filter(Boolean).join(" · ")}
+                  </span>
+                )}
+                {price && <span className="shop-price">{price}</span>}
               </div>
             </div>
           );
