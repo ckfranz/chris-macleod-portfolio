@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../../components/Layout";
 
@@ -34,6 +34,7 @@ const ShopPrints = () => {
                   Status
                   Year
                   caption
+                  PrintAvailable
                 }
               }
             }
@@ -42,6 +43,14 @@ const ShopPrints = () => {
       }
     `
   );
+  const filteredData = useMemo(() => ({
+    allCloudinaryMedia: {
+      edges: (data?.allCloudinaryMedia?.edges ?? []).filter(
+        (edge) => edge.node.context?.custom?.PrintAvailable === "True"
+      ),
+    },
+  }), [data]);
+
   return (
     <Layout>
       <div className="shop-page">
@@ -55,19 +64,19 @@ const ShopPrints = () => {
           <ul className="prints-price-list">
             <li>
               <span className="prints-size">5x7"</span>
-              <span className="prints-price">$50.00</span>
+              <span className="prints-price">$30.00</span>
             </li>
             <li>
               <span className="prints-size">8x10"</span>
-              <span className="prints-price">$75.00</span>
+              <span className="prints-price">$50.00</span>
             </li>
             <li>
               <span className="prints-size">11x14"</span>
-              <span className="prints-price">$150.00</span>
+              <span className="prints-price">$100.00</span>
             </li>
           </ul>
         </div>
-        <ShopGallery data={data} showStatus={false} />
+        <ShopGallery data={filteredData} showStatus={false} />
       </div>
     </Layout>
   );
