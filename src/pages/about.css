@@ -43,6 +43,10 @@
   height: auto;
 }
 
+.about-img--mobile {
+  display: none !important;
+}
+
 .bio p {
   font-family: "Cardo", Georgia, serif;
   font-size: 15px;
@@ -80,6 +84,14 @@
 
   .about-img {
     margin: 0 auto;
+  }
+
+  .about-img--desktop {
+    display: none !important;
+  }
+
+  .about-img--mobile {
+    display: block !important;
   }
 
   .bio p {

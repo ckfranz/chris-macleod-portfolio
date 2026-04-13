@@ -1,55 +1,11 @@
-// Step 1: Import React
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-
 import Layout from "../components/Layout";
-import Gallery from "../components/Gallery";
-import Slideshow from "../components/Slideshow";
-
 import "./index.css";
 
-// Step 2: Define your component
 const IndexPage = () => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allCloudinaryMedia(
-          filter: { public_id: { glob: "ChrisPortfolio/WebsiteWildlife/*" } }
-        ) {
-          edges {
-            node {
-              secure_url
-              gatsbyImageData(placeholder: TRACED_SVG)
-              context {
-                custom {
-                  Medium
-                  Size
-                  Status
-                  Year
-                  caption
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-  );
-
-  return (
-    <Layout>
-      <div>
-        {/* <Slideshow /> */}
-        <section className="section">
-          <Gallery data={data} />
-        </section>
-      </div>
-    </Layout>
-  );
+  return <Layout />;
 };
 
-// You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home Page</title>;
+export const Head = () => <title>Chris Macleod Art</title>;
 
-// Step 3: Export your component
 export default IndexPage;

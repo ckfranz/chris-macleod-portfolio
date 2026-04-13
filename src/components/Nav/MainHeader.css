@@ -4,18 +4,12 @@
   --dark: #232323;
 }
 
-/* ─── Shared header shell ─────────────────────────────────── */
+/* ─── Header ─────────────────────────────────────────────── */
 .app-header {
   background-color: #dde1d0;
 }
 
-/* ─── Mobile header row (hidden on desktop) ──────────────── */
-.mobile-header-row {
-  display: none;
-}
-
-/* ─── Desktop header ─────────────────────────────────────── */
-.desktop-header {
+.site-header-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,33 +35,50 @@
   right: -30px;
 }
 
-.desktop-logo-row {
+.logo-row {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-bottom: 8px;
 }
 
 .header-logo {
-  height: 200px;
+  height: 130px;
   width: auto;
   display: block;
 }
 
-/* balances the social icons so the logo stays truly centred */
-.logo-spacer {
-  min-width: 80px;
+/* ─── Social ─────────────────────────────────────────────── */
+.social-container {
+  display: block;
 }
 
-/* ─── Circle nav (below the green header) ────────────────── */
+.social-container .socials {
+  margin: 0;
+}
+
+.social-container .socials a {
+  color: #283314;
+}
+
+.social-container .socials a:hover {
+  color: #171e08;
+}
+
+/* ─── Circle nav ─────────────────────────────────────────── */
 .circle-nav {
   width: 100%;
+  background-color: rgb(255, 254, 252);
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.circle-nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 40px 40px;
-  background-color: rgb(255, 254, 252);
 }
 
 .circle-nav-header {
@@ -116,7 +127,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  column-gap: 40px;
+  row-gap: 20px;
 }
 
 .circle-nav-item {
@@ -128,13 +140,11 @@
 }
 
 .circle-img {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .circle-gatsby-img {
@@ -156,159 +166,62 @@
   text-align: center;
 }
 
-/* ─── Social (desktop) ───────────────────────────────────── */
-.social-container {
-  display: block;
-}
-
-.social-container .socials {
-  margin: 0;
-}
-
-.social-container .socials a {
-  color: #283314;
-}
-
-.social-container .socials a:hover {
-  color: #171e08;
-}
-
-/* ─── Mobile nav ─────────────────────────────────────────── */
-.nav-menu {
-  display: none;
-  border: none;
-  background: none;
-  font-family: inherit;
-  color: rgb(122, 122, 122);
-  border-radius: 50%;
-  width: 4rem;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-i {
-  font-size: 32px;
-}
-
-.mobile-nav {
-  display: none;
-}
-
-.mobile-nav .nav-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  min-height: calc(100vh - 64px);
-  padding: 32px 0 80px;
-  gap: 20px;
-}
-
-.mobile-nav a {
-  font-weight: 200 !important;
-  font-size: 14px !important;
-  text-decoration: none;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-.mobile-nav a.active {
-  color: var(--dark) !important;
-}
-
-.mobile-section-trigger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 200;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 0;
-}
-
-.mobile-sub {
-  position: relative;
-  min-height: calc(100vh - 64px);
-}
-
-.mobile-back {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgb(122, 122, 122);
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  font-size: 18px;
-}
-
-.mobile-back svg {
-  transform: rotate(90deg);
-  width: 24px;
-  height: 24px;
-}
-
-.mobile-social {
-  margin-top: 8px;
-}
-
-/* ─── Responsive ─────────────────────────────────────────── */
+/* ─── Mobile ─────────────────────────────────────────────── */
 @media screen and (max-width: 800px) {
-  .desktop-header {
-    display: none;
+  .site-header-inner {
+    padding: 16px 20px;
+  }
+
+  .header-logo {
+    height: 80px;
+  }
+
+  .corner-icon {
+    width: 110px;
+  }
+
+  .corner-icon--tl {
+    top: -20px;
+    left: -20px;
+  }
+
+  .corner-icon--br {
+    bottom: -20px;
+    right: -20px;
+  }
+
+  .social-container .socials {
+    gap: 1rem;
   }
 
   .circle-nav {
-    display: none;
+    padding: 24px 16px;
   }
 
-  .mobile-header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    padding: 0 12px;
-    background-color: #dde1d0;
+  .circle-nav-items {
+    column-gap: 20px;
+    row-gap: 12px;
   }
 
-  .header-logo-mobile {
-    height: 44px;
-    width: auto;
-    display: block;
+  .circle-img {
+    width: 80px;
+    height: 80px;
   }
 
-  .nav-menu {
-    display: block;
+  .circle-label {
+    font-size: 11px;
+    letter-spacing: 0.03em;
   }
 
-  .social-container {
-    display: none;
+  .circle-nav-title {
+    font-size: 16px;
   }
 
-  .mobile-nav {
-    display: none;
-    position: fixed;
-    top: 64px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-    z-index: 10;
-    overflow-y: auto;
+  .circle-nav-back {
+    font-size: 11px;
   }
 
-  .mobile-nav.active {
-    display: block;
+  .circle-nav-header {
+    margin-bottom: 16px;
   }
 }

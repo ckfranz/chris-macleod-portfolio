@@ -5,8 +5,8 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const About = ({ data }) => {
-  const profileNode = data.aboutImages.nodes[0];
-  const profileImage = profileNode ? getImage(profileNode) : null;
+  const profileA = getImage(data.profileA.nodes[0]);
+  const profileB = getImage(data.profileB.nodes[0]);
 
   return (
     <Layout>
@@ -14,14 +14,19 @@ const About = ({ data }) => {
         <h1 className="about-page-title">About the Artist</h1>
         <div className="about-container">
           <div className="about-img-container">
-            {profileImage ? (
+            {profileA && (
               <GatsbyImage
-                image={profileImage}
+                image={profileA}
                 alt="Chris Macleod portrait"
-                className="about-img"
+                className="about-img about-img--desktop"
               />
-            ) : (
-              <div className="about-img-placeholder">Photo</div>
+            )}
+            {profileB && (
+              <GatsbyImage
+                image={profileB}
+                alt="Chris Macleod portrait"
+                className="about-img about-img--mobile"
+              />
             )}
           </div>
           <div className="bio">
@@ -57,7 +62,7 @@ export default About;
 
 export const query = graphql`
   query {
-    aboutImages: allCloudinaryMedia(
+    profileA: allCloudinaryMedia(
       filter: {
         public_id: { glob: "ChrisPortfolio/About/*" }
         context: { custom: { Role: { eq: "profile-a" } } }
@@ -69,11 +74,20 @@ export const query = graphql`
           placeholder: BLURRED
           transformations: ["f_auto,q_85,c_limit,w_800"]
         )
-        context {
-          custom {
-            Role
-          }
-        }
+      }
+    }
+    profileB: allCloudinaryMedia(
+      filter: {
+        public_id: { glob: "ChrisPortfolio/About/*" }
+        context: { custom: { Role: { eq: "profile-b" } } }
+      }
+    ) {
+      nodes {
+        public_id
+        gatsbyImageData(
+          placeholder: BLURRED
+          transformations: ["f_auto,q_85,c_limit,w_800"]
+        )
       }
     }
   }

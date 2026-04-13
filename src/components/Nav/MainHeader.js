@@ -2,23 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link, navigate, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { ChevronDown } from "lucide-react";
-
 import "./MainHeader.css";
 import Social from ".././Social";
 import logoGreen from "../../images/assets/logo-green.png";
 import designIcon from "../../images/assets/design-icon.png";
 
 const MAIN_NAV = [
-  { id: "about",          label: "About",          href: "/about",           color: "#767F64" },
-  { id: "portfolio",      label: "Portfolio",                                 color: "#283314" },
-  { id: "shop",           label: "Shop",                                      color: "#DDE1D0" },
-  { id: "commissions",    label: "Commissions",                               color: "#171E08" },
-  { id: "collaborations", label: "Collaborations", href: "/collaborations",   color: "#EDECE4" },
-  { id: "contact",        label: "Contact",        href: "/contact",          color: "#767F64" },
+  { id: "about",          label: "About",          href: "/about",         color: "#767F64" },
+  { id: "portfolio",      label: "Portfolio",                               color: "#283314" },
+  { id: "shop",           label: "Shop",                                    color: "#DDE1D0" },
+  { id: "commissions",    label: "Commissions",                             color: "#171E08" },
+  { id: "collaborations", label: "Collaborations", href: "/collaborations", color: "#EDECE4" },
+  { id: "contact",        label: "Contact",        href: "/contact",        color: "#767F64" },
 ];
 
 const SUB_NAV = {
@@ -35,7 +30,7 @@ const SUB_NAV = {
     { label: "Available Originals", href: "/shop/shop-originals", color: "#767F64" },
   ],
   commissions: [
-    { label: "Wildlife",     href: "/commissions/wildlife-commission",        color: "#283314" },
+    { label: "Wildlife",      href: "/commissions/wildlife-commission",       color: "#283314" },
     { label: "Pet Portraits", href: "/commissions/pet-portraits-commission",  color: "#767F64" },
   ],
 };
@@ -44,8 +39,6 @@ const MainHeader = () => {
   const [activeSection, setActiveSection] = useState(() =>
     typeof window !== "undefined" ? localStorage.getItem("navActiveSection") : null
   );
-  const [isOpen, setIsOpen] = useState(false);
-  const [openSection, setOpenSection] = useState(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,7 +49,6 @@ const MainHeader = () => {
     }
   }, [activeSection]);
 
-  // Fetch all Navbar images from Cloudinary
   const data = useStaticQuery(graphql`
     query NavbarImages {
       allCloudinaryMedia(
@@ -78,27 +70,11 @@ const MainHeader = () => {
     }
   `);
 
-  // Build a map: lowercase caption → GatsbyImage data
   const imgMap = {};
   data.allCloudinaryMedia.nodes.forEach((node) => {
     const caption = node.context?.custom?.caption?.toLowerCase().trim();
-    if (caption) {
-      imgMap[caption] = getImage(node);
-    }
+    if (caption) imgMap[caption] = getImage(node);
   });
-
-  const closeMobileNav = () => {
-    setIsOpen(false);
-    setOpenSection(null);
-    document.body.style.overflow = "auto";
-  };
-
-  const toggleMobileNav = () => {
-    const next = !isOpen;
-    setIsOpen(next);
-    setOpenSection(null);
-    document.body.style.overflow = next ? "hidden" : "auto";
-  };
 
   const handleCircleClick = (item) => {
     if (item.href) {
@@ -113,26 +89,11 @@ const MainHeader = () => {
   return (
     <div>
       <header className="app-header" id="header">
-        {/* Mobile: compact row */}
-        <div className="mobile-header-row">
-          <Link to="/" onClick={closeMobileNav}>
-            <img src={logoGreen} alt="Chris Macleod Art" className="header-logo-mobile" />
-          </Link>
-          <button className="nav-menu" onClick={toggleMobileNav}>
-            {!isOpen ? (
-              <FontAwesomeIcon icon={faBars} />
-            ) : (
-              <i className="bi bi-x"></i>
-            )}
-          </button>
-        </div>
-
-        {/* Desktop: logo + social */}
-        <div className="desktop-header">
+        <div className="site-header-inner">
           <img src={designIcon} alt="" className="corner-icon corner-icon--tl" aria-hidden="true" />
           <img src={designIcon} alt="" className="corner-icon corner-icon--br" aria-hidden="true" />
-          <div className="desktop-logo-row">
-            <Link to="/about">
+          <div className="logo-row">
+            <Link to="/" onClick={() => setActiveSection(null)}>
               <img src={logoGreen} alt="Chris Macleod Art" className="header-logo" />
             </Link>
             <div className="social-container">
@@ -142,8 +103,8 @@ const MainHeader = () => {
         </div>
       </header>
 
-      {/* DESKTOP CIRCLE NAV — below the green header */}
       <nav className="circle-nav">
+        <div className="circle-nav-inner">
         {activeSection && (
           <div className="circle-nav-header">
             <button
@@ -170,11 +131,7 @@ const MainHeader = () => {
               >
                 <div className="circle-img" style={!img ? { backgroundColor: item.color } : {}}>
                   {img && (
-                    <GatsbyImage
-                      image={img}
-                      alt={item.label}
-                      className="circle-gatsby-img"
-                    />
+                    <GatsbyImage image={img} alt={item.label} className="circle-gatsby-img" />
                   )}
                 </div>
                 <span className="circle-label">{item.label}</span>
@@ -182,62 +139,7 @@ const MainHeader = () => {
             );
           })}
         </div>
-      </nav>
-
-      {/* MOBILE NAV */}
-      <nav className={"mobile-nav" + (isOpen ? " active" : "")}>
-        {!openSection && (
-          <ul className="nav-list">
-            <li>
-              <button
-                className="mobile-section-trigger"
-                onClick={() => setOpenSection("collections")}
-              >
-                portfolio
-              </button>
-            </li>
-            <li>
-              <button
-                className="mobile-section-trigger"
-                onClick={() => setOpenSection("shop")}
-              >
-                shop
-              </button>
-            </li>
-            <li><Link to="/about" onClick={closeMobileNav}>about</Link></li>
-            <li><Link to="/collaborations" onClick={closeMobileNav}>collaborations</Link></li>
-            <li><Link to="/contact" onClick={closeMobileNav}>contact</Link></li>
-            <li className="mobile-social"><Social /></li>
-          </ul>
-        )}
-
-        {openSection === "collections" && (
-          <div className="mobile-sub">
-            <button className="mobile-back" onClick={() => setOpenSection(null)} aria-label="Back to main menu">
-              <ChevronDown size={22} strokeWidth={2} />
-            </button>
-            <ul className="nav-list">
-              <li><Link to="/collections/pastel" onClick={closeMobileNav}>pastel</Link></li>
-              <li><Link to="/collections/studies" onClick={closeMobileNav}>studies</Link></li>
-              <li><Link to="/collections/pet-portraits" onClick={closeMobileNav}>pet portraits</Link></li>
-              <li><Link to="/collections/vintage-encyclopedia" onClick={closeMobileNav}>vintage encyclopedia</Link></li>
-              <li><Link to="/collections/watercolour" onClick={closeMobileNav}>watercolour</Link></li>
-              <li><Link to="/collections/weekly-sketches" onClick={closeMobileNav}>weekly sketches</Link></li>
-            </ul>
-          </div>
-        )}
-
-        {openSection === "shop" && (
-          <div className="mobile-sub">
-            <button className="mobile-back" onClick={() => setOpenSection(null)} aria-label="Back to main menu">
-              <ChevronDown size={22} strokeWidth={2} />
-            </button>
-            <ul className="nav-list">
-              <li><Link to="/shop/shop-originals" onClick={closeMobileNav}>originals</Link></li>
-              <li><Link to="/shop/shop-prints" onClick={closeMobileNav}>prints</Link></li>
-            </ul>
-          </div>
-        )}
+        </div>
       </nav>
     </div>
   );
