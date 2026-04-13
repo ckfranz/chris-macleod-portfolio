@@ -1,6 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap");
 
-/* @import url("https://fonts.cdnfonts.com/css/maleah"); */
+@font-face {
+  font-family: "Maleah";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.cdnfonts.com/s/18964/Maleah-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Maleah";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://fonts.cdnfonts.com/s/18964/Maleah-Bold.woff") format("woff");
+}
 
 :root {
   --primary: #676767;
@@ -12,17 +23,16 @@
   --secondary-accent-light: #767f64;
   --tertiary-accent: #edece4;
 
-  font-family: "Inter", sans-serif;
-  /* font-family: "Maleah", sans-serif; */
+  font-family: "Maleah", serif;
 }
 
 * {
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  /* font-family: "Maleah", sans-serif; */
+  font-family: "Maleah", serif;
 }
 
 body {
+  margin: 0;
   color: var(--primary);
 }
 
@@ -59,10 +69,11 @@ h2 {
 }
 
 p {
-  font-size: 14px;
-  line-height: 1.6;
-  font-weight: 200;
-  margin-bottom: 36px;
+  font-family: "Cardo", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 24px;
   margin-top: 0px;
   letter-spacing: 0.2px;
 }

@@ -5,14 +5,16 @@
 }
 
 .collaborations-title {
-  font-size: 24px;
-  font-weight: 300;
+  font-family: "Maleah", serif;
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
   text-align: center;
   margin: 0 0 48px 0;
   padding: 0;
-  color: var(--dark);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  color: #283314;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .collab-section {
@@ -20,11 +22,13 @@
 }
 
 .collab-heading {
-  font-size: 13px;
+  font-family: "Maleah", serif;
+  font-size: 18px;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--dark);
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #283314;
   border-bottom: 1px solid #ebebeb;
   padding: 0 0 12px 0;
   margin: 0 0 24px 0;

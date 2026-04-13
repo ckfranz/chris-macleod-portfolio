@@ -11,6 +11,7 @@ const About = ({ data }) => {
   return (
     <Layout>
       <div className="page-container">
+        <h1 className="about-page-title">About the Artist</h1>
         <div className="about-container">
           <div className="about-img-container">
             {profileImage ? (
@@ -59,7 +60,7 @@ export const query = graphql`
     aboutImages: allCloudinaryMedia(
       filter: {
         public_id: { glob: "ChrisPortfolio/About/*" }
-        context: { custom: { Role: { eq: "profile" } } }
+        context: { custom: { Role: { eq: "profile-a" } } }
       }
     ) {
       nodes {

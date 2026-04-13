@@ -37,11 +37,13 @@
 }
 
 .gallery-title {
-  font-size: 11px;
+  font-family: "Maleah", serif;
+  font-size: 30px;
   font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--light);
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #283314;
   text-align: center;
   margin: 0 0 32px;
 }

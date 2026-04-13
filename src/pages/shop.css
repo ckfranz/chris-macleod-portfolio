@@ -30,10 +30,15 @@ a.link {
 }
 
 h1 {
+  font-family: "Maleah", serif;
   font-weight: 400;
-  font-family: "Playfair Display", serif;
-  font-size: 28px;
-  padding: 0 8px;
+  font-size: 30px;
+  color: #283314;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-style: normal;
+  margin: 0 0 16px 0;
+  padding: 0;
 }
 
 .col h4 {

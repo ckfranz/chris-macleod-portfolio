@@ -1,3 +1,21 @@
+@font-face {
+  font-family: "Maleah";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.cdnfonts.com/s/18964/Maleah-Regular.woff") format("woff");
+}
+
+.about-page-title {
+  font-family: "Maleah", serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: #283314;
+  letter-spacing: 0.02em;
+  margin: 0 0 24px 0;
+  text-transform: none;
+  font-style: normal;
+}
+
 .page-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -15,9 +33,9 @@
 }
 
 .about-img-container {
-  flex: 0 0 320px; /* Fixed width, won't grow or shrink */
+  flex: 0 0 320px;
   position: sticky;
-  top: 100px; /* Sticks while scrolling on desktop */
+  top: 100px;
 }
 
 .about-img {
@@ -26,9 +44,10 @@
 }
 
 .bio p {
+  font-family: "Cardo", Georgia, serif;
   font-size: 15px;
-  line-height: 1.8;
-  color: #333;
+  line-height: 1.55;
+  color: #283314;
   margin: 0 0 24px 0;
 }
 
@@ -36,10 +55,14 @@
   margin-bottom: 0;
 }
 
-
 @media screen and (max-width: 800px) {
   .page-container {
     padding: 24px 24px;
+  }
+
+  .about-page-title {
+    font-size: 32px;
+    margin-bottom: 28px;
   }
 
   .about-container {
@@ -52,7 +75,7 @@
     flex: none;
     width: 100%;
     max-width: 280px;
-    position: static; /* Remove sticky on mobile */
+    position: static;
   }
 
   .about-img {
@@ -60,8 +83,8 @@
   }
 
   .bio p {
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.75;
     text-align: left;
   }
 }

@@ -270,16 +270,18 @@
 }
 
 .shop-header h1 {
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin: 0 0 12px 0;
-  color: var(--dark);
+  font-family: "Maleah", serif;
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  margin: 0 0 16px 0;
+  color: #283314;
 }
 
 .shop-header p {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.8;
   color: var(--primary);
   margin: 0;
