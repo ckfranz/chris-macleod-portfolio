@@ -23,7 +23,7 @@
 
 .collab-heading {
   font-family: "Maleah", serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 400;
   font-style: normal;
   text-transform: none;
@@ -55,6 +55,7 @@
 }
 
 .collab-project {
+  font-family: "Cardo", Georgia, serif;
   font-size: 15px;
   color: var(--dark);
   line-height: 1.6;
@@ -70,6 +71,7 @@
 }
 
 .collab-partner {
+  font-family: "Cardo", Georgia, serif;
   font-size: 13px;
   color: var(--primary);
   font-style: italic;
@@ -81,7 +83,7 @@
   }
 
   .collaborations-title {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 36px;
   }
 

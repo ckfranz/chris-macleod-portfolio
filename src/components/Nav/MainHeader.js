@@ -13,7 +13,7 @@ const MAIN_NAV = [
   { id: "shop",           label: "Shop",                                    color: "#DDE1D0" },
   { id: "commissions",    label: "Commissions",                             color: "#171E08" },
   { id: "collaborations", label: "Collaborations", href: "/collaborations", color: "#EDECE4" },
-  { id: "contact",        label: "Contact",        href: "/contact",        color: "#767F64" },
+  { id: "contact",        label: "Contact",        href: "/contact",        color: "#DDE1D0", logo: true },
 ];
 
 const SUB_NAV = {
@@ -39,6 +39,7 @@ const MainHeader = () => {
   const [activeSection, setActiveSection] = useState(() =>
     typeof window !== "undefined" ? localStorage.getItem("navActiveSection") : null
   );
+  const [overlayVisible, setOverlayVisible] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -78,9 +79,12 @@ const MainHeader = () => {
 
   const handleCircleClick = (item) => {
     if (item.href) {
+      if (!activeSection) setActiveSection(null);
+      setOverlayVisible(false);
       navigate(item.href);
-    } else {
+    } else if (SUB_NAV[item.id]) {
       setActiveSection(item.id);
+      setOverlayVisible(true);
     }
   };
 
@@ -88,12 +92,15 @@ const MainHeader = () => {
 
   return (
     <div>
+      {overlayVisible && (
+        <div className="nav-overlay" aria-hidden="true" />
+      )}
       <header className="app-header" id="header">
         <div className="site-header-inner">
           <img src={designIcon} alt="" className="corner-icon corner-icon--tl" aria-hidden="true" />
           <img src={designIcon} alt="" className="corner-icon corner-icon--br" aria-hidden="true" />
           <div className="logo-row">
-            <Link to="/" onClick={() => setActiveSection(null)}>
+            <Link to="/" onClick={() => { setActiveSection(null); setOverlayVisible(false); }}>
               <img src={logoGreen} alt="Chris Macleod Art" className="header-logo" />
             </Link>
             <div className="social-container">
@@ -105,40 +112,40 @@ const MainHeader = () => {
 
       <nav className="circle-nav">
         <div className="circle-nav-inner">
-        {activeSection && (
-          <div className="circle-nav-header">
+          <div className="circle-nav-header" style={{ visibility: activeSection ? "visible" : "hidden" }}>
             <button
               className="circle-nav-back"
-              onClick={() => setActiveSection(null)}
+              onClick={() => { setActiveSection(null); setOverlayVisible(false); }}
               aria-label="Back"
             >
               ← back
             </button>
             <span className="circle-nav-title">
-              {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
+              {activeSection ? activeSection.charAt(0).toUpperCase() + activeSection.slice(1) : ""}
             </span>
             <span className="circle-nav-header-spacer" aria-hidden="true">← back</span>
           </div>
-        )}
-        <div className="circle-nav-items">
-          {displayItems.map((item) => {
-            const img = imgMap[item.label.toLowerCase()];
-            return (
-              <div
-                key={item.label}
-                className="circle-nav-item"
-                onClick={() => handleCircleClick(item)}
-              >
-                <div className="circle-img" style={!img ? { backgroundColor: item.color } : {}}>
-                  {img && (
-                    <GatsbyImage image={img} alt={item.label} className="circle-gatsby-img" />
-                  )}
+          <div className="circle-nav-items">
+            {displayItems.map((item) => {
+              const img = imgMap[item.label.toLowerCase()];
+              return (
+                <div
+                  key={item.label}
+                  className="circle-nav-item"
+                  onClick={() => handleCircleClick(item)}
+                >
+                  <div className="circle-img" style={{ backgroundColor: item.color }}>
+                    {item.logo ? (
+                      <img src={logoGreen} alt={item.label} className="circle-logo-img" />
+                    ) : img ? (
+                      <GatsbyImage image={img} alt={item.label} className="circle-gatsby-img" />
+                    ) : null}
+                  </div>
+                  <span className="circle-label">{item.label}</span>
                 </div>
-                <span className="circle-label">{item.label}</span>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
         </div>
       </nav>
     </div>

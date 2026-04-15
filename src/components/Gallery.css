@@ -100,4 +100,8 @@
   .thumb {
     padding: 4px;
   }
+
+  .gallery-title {
+    font-size: 22px;
+  }
 }

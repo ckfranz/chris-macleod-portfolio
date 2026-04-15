@@ -99,6 +99,7 @@ const Commissions = ({ data }) => {
                 image={getImage(chalkPastelSample[0])}
                 className="pricing-card-image"
                 alt="Chalk pastel sample"
+                imgStyle={{ objectPosition: "center 40%" }}
               />
               <ul className="price-list">
                 <li>
@@ -131,6 +132,7 @@ const Commissions = ({ data }) => {
                 image={getImage(watercolourSample[0])}
                 className="pricing-card-image"
                 alt="Watercolour sample"
+                imgStyle={{ objectPosition: "center 40%" }}
               />
               <ul className="price-list">
                 <li>

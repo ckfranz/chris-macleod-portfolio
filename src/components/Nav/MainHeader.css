@@ -4,9 +4,21 @@
   --dark: #232323;
 }
 
+/* ─── Overlay ────────────────────────────────────────────── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgb(255, 254, 252);
+  pointer-events: none;
+}
+
+
 /* ─── Header ─────────────────────────────────────────────── */
 .app-header {
   background-color: #dde1d0;
+  position: relative;
+  z-index: 51;
 }
 
 .site-header-inner {
@@ -69,24 +81,28 @@
 .circle-nav {
   width: 100%;
   background-color: rgb(255, 254, 252);
-  padding: 40px;
+  padding: 28px 40px 32px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 51;
 }
 
 .circle-nav-inner {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 14px;
 }
 
 .circle-nav-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 20px;
+  height: 36px;
 }
 
 .circle-nav-header-spacer {
@@ -98,9 +114,10 @@
 .circle-nav-title {
   font-family: "Maleah", serif;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 500;
   color: #283314;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 .circle-nav-back {
@@ -117,6 +134,7 @@
   padding: 0;
   opacity: 0.7;
   transition: opacity 0.15s ease;
+  align-self: flex-start;
 }
 
 .circle-nav-back:hover {
@@ -127,21 +145,23 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 40px;
-  row-gap: 20px;
+  column-gap: 24px;
+  row-gap: 10px;
 }
 
+/* ─── Circle items ───────────────────────────────────────── */
 .circle-nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   cursor: pointer;
+  width: 95px;
 }
 
 .circle-img {
-  width: 120px;
-  height: 120px;
+  width: 95px;
+  height: 95px;
   border-radius: 50%;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -152,6 +172,14 @@
   height: 100%;
 }
 
+.circle-logo-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: block;
+  margin: 15% auto 0;
+}
+
 .circle-nav-item:hover .circle-img {
   transform: scale(1.04);
   box-shadow: 0 6px 20px rgba(40, 51, 20, 0.2);
@@ -159,11 +187,13 @@
 
 .circle-label {
   font-family: "Maleah", serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: #283314;
   text-align: center;
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* ─── Mobile ─────────────────────────────────────────────── */
@@ -195,11 +225,11 @@
   }
 
   .circle-nav {
-    padding: 24px 16px;
+    padding: 20px 16px 24px;
   }
 
   .circle-nav-items {
-    column-gap: 20px;
+    column-gap: 12px;
     row-gap: 12px;
   }
 
@@ -208,20 +238,12 @@
     height: 80px;
   }
 
+  .circle-nav-item {
+    width: 80px;
+  }
+
   .circle-label {
     font-size: 11px;
     letter-spacing: 0.03em;
-  }
-
-  .circle-nav-title {
-    font-size: 16px;
-  }
-
-  .circle-nav-back {
-    font-size: 11px;
-  }
-
-  .circle-nav-header {
-    margin-bottom: 16px;
   }
 }
