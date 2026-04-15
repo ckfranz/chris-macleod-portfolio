@@ -13,7 +13,6 @@
   pointer-events: none;
 }
 
-
 /* ─── Header ─────────────────────────────────────────────── */
 .app-header {
   background-color: #dde1d0;
@@ -164,7 +163,9 @@
   height: 95px;
   border-radius: 50%;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .circle-gatsby-img {
@@ -177,7 +178,7 @@
   height: 70%;
   object-fit: contain;
   display: block;
-  margin: 15% auto 0;
+  margin: 13% auto 0 10%;
 }
 
 .circle-nav-item:hover .circle-img {
