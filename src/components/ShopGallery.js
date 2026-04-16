@@ -130,7 +130,7 @@ const ShopGallery = ({ data, showStatus = true }) => {
                 )}
                 {selectedItem.context?.custom?.Price && (
                   <p className="shop-modal-price">
-                    {selectedItem.context.custom.Price}
+                    ${selectedItem.context.custom.Price}
                   </p>
                 )}
                 <a href="/contact" className="shop-inquiry-btn">
@@ -201,7 +201,7 @@ const ShopGallery = ({ data, showStatus = true }) => {
                     {[medium, size].filter(Boolean).join(" · ")}
                   </span>
                 )}
-                {price && <span className="shop-price">{price}</span>}
+                {price && <span className="shop-price">${price}</span>}
               </div>
             </div>
           );

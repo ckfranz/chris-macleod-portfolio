@@ -45,6 +45,15 @@ const Collaborations = () => {
                 </span>
                 <span className="collab-partner">with PhD student Caleb Neimeyer</span>
               </li>
+              <li>
+                <span className="collab-project">Apple and Blueberry Growth Charts</span>
+                <span className="collab-partner">with ADAMA Agricultural Solutions and Fresh Eyes Communications</span>
+                <span className="collab-links">
+                  <a href="https://simplicity.adama.com/all-in-on-apples" target="_blank" rel="noopener noreferrer" className="collab-link">Apples</a>
+                  {" · "}
+                  <a href="https://simplicity.adama.com/all-in-on-blueberries" target="_blank" rel="noopener noreferrer" className="collab-link">Blueberries</a>
+                </span>
+              </li>
             </ul>
           </section>
 

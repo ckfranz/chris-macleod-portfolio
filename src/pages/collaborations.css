@@ -61,6 +61,12 @@
   line-height: 1.6;
 }
 
+.collab-links {
+  font-family: "Cardo", Georgia, serif;
+  font-size: 13px;
+  color: var(--primary);
+}
+
 .collab-link {
   text-decoration: underline;
   transition: color 0.2s;
