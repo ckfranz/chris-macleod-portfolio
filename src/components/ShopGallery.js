@@ -2,9 +2,11 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 import "./ShopGallery.css";
 import ReturnToTop from "../UIComponents/ReturnToTop";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 
-const ShopGallery = ({ data, showStatus = true }) => {
+const etsyShopLink = process.env.GATSBY_ETSY_LINK;
+
+const ShopGallery = ({ data, showStatus = true, buyOnEtsy = false }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [fullResLoaded, setFullResLoaded] = useState(false);
 
@@ -60,10 +62,19 @@ const ShopGallery = ({ data, showStatus = true }) => {
     <div className="shop-main">
       {/* Inquiry Banner */}
       <div className="shop-banner">
-        <p>
-          Interested in a piece? <a href="/contact">Contact me</a> to inquire
-          about availability and pricing.
-        </p>
+        {buyOnEtsy ? (
+          <p>
+            Prints are sold through my Etsy shop.{" "}
+            <a href={etsyShopLink} target="_blank" rel="noopener noreferrer">
+              Shop prints on Etsy &rarr;
+            </a>
+          </p>
+        ) : (
+          <p>
+            Interested in a piece? <a href="/contact">Contact me</a> to inquire
+            about availability and pricing.
+          </p>
+        )}
       </div>
 
       {/* Item Modal */}
@@ -133,9 +144,21 @@ const ShopGallery = ({ data, showStatus = true }) => {
                     ${selectedItem.context.custom.Price}
                   </p>
                 )}
-                <a href="/contact" className="shop-inquiry-btn">
-                  Inquire About This Piece
-                </a>
+                {buyOnEtsy ? (
+                  <a
+                    href={selectedItem.context?.custom?.EtsyLink || etsyShopLink}
+                    className="shop-inquiry-btn shop-etsy-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Purchase on Etsy
+                    <ExternalLink size={13} strokeWidth={1.5} />
+                  </a>
+                ) : (
+                  <a href="/contact" className="shop-inquiry-btn">
+                    Inquire About This Piece
+                  </a>
+                )}
               </div>
             </div>
           </div>

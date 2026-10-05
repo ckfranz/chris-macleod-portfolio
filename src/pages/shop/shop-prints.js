@@ -9,7 +9,7 @@ const ShopPrints = () => {
     graphql`
       query {
         allCloudinaryMedia(
-          filter: { public_id: { glob: "ChrisPortfolio/WebsiteWildlife/*" } }
+          filter: { public_id: { glob: "ChrisPortfolio/Website*/**" } }
         ) {
           edges {
             node {
@@ -35,6 +35,7 @@ const ShopPrints = () => {
                   Year
                   caption
                   PrintAvailable
+                  EtsyLink
                 }
               }
             }
@@ -46,7 +47,10 @@ const ShopPrints = () => {
   const filteredData = useMemo(() => ({
     allCloudinaryMedia: {
       edges: (data?.allCloudinaryMedia?.edges ?? []).filter(
-        (edge) => edge.node.context?.custom?.PrintAvailable === "True"
+        (edge) =>
+          ["true", "yes"].includes(
+            edge.node.context?.custom?.PrintAvailable?.trim().toLowerCase()
+          )
       ),
     },
   }), [data]);
@@ -76,7 +80,7 @@ const ShopPrints = () => {
             </li>
           </ul>
         </div>
-        <ShopGallery data={filteredData} showStatus={false} />
+        <ShopGallery data={filteredData} showStatus={false} buyOnEtsy />
       </div>
     </Layout>
   );

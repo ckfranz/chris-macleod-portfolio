@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../../components/Layout";
 
@@ -9,12 +9,7 @@ const ShopOriginals = () => {
     graphql`
       query {
         allCloudinaryMedia(
-          filter: {
-            public_id: {
-              regex: "/ChrisPortfolio/Website(Wildlife|PastelStudies)//"
-            }
-            context: { custom: { Status: { eq: "AVAILABLE" } } }
-          }
+          filter: { public_id: { glob: "ChrisPortfolio/Website*/**" } }
         ) {
           edges {
             node {
@@ -50,6 +45,16 @@ const ShopOriginals = () => {
       }
     `
   );
+  const filteredData = useMemo(() => ({
+    allCloudinaryMedia: {
+      edges: (data?.allCloudinaryMedia?.edges ?? []).filter(
+        (edge) =>
+          edge.node.context?.custom?.Status?.trim().toLowerCase() ===
+          "available"
+      ),
+    },
+  }), [data]);
+
   return (
     <Layout>
       <div className="shop-page">
@@ -61,7 +66,7 @@ const ShopOriginals = () => {
             authenticity.
           </p>
         </div>
-        <ShopGallery data={data} showStatus={false} />
+        <ShopGallery data={filteredData} showStatus={false} />
       </div>
     </Layout>
   );
