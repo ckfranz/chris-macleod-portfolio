@@ -293,40 +293,6 @@
   margin: 0;
 }
 
-/* Prints pricing */
-.prints-price-list {
-  list-style: none;
-  padding: 0;
-  margin: 24px auto 0;
-  max-width: 260px;
-}
-
-.prints-price-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 8px 0;
-  border-bottom: 1px solid #ebebeb;
-  font-size: 14px;
-  color: var(--primary);
-}
-
-.prints-price-list li:last-child {
-  border-bottom: none;
-}
-
-.prints-size {
-  color: var(--dark);
-  font-weight: 300;
-  margin: 0;
-}
-
-.prints-price {
-  font-weight: 400;
-  color: var(--dark);
-  margin: 0;
-}
-
 /* Empty state */
 .empty {
   text-align: center;

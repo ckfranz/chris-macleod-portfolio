@@ -65,20 +65,6 @@ const ShopPrints = () => {
             durable, acid-free, cold-pressed paper. These stunning reproductions
             come at a significantly reduced price from the originals.
           </p>
-          <ul className="prints-price-list">
-            <li>
-              <span className="prints-size">5x7"</span>
-              <span className="prints-price">$30.00</span>
-            </li>
-            <li>
-              <span className="prints-size">8x10"</span>
-              <span className="prints-price">$50.00</span>
-            </li>
-            <li>
-              <span className="prints-size">11x14"</span>
-              <span className="prints-price">$100.00</span>
-            </li>
-          </ul>
         </div>
         <ShopGallery data={filteredData} showStatus={false} buyOnEtsy />
       </div>
